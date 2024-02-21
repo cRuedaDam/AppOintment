@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DialogTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="MainButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="ButtonMaterial" parent="Widget.Material3.Button">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:backgroundTint">@color/seed</item>
+    </style>
+
+    <style name="ButtonMaterialRed" parent="Widget.Material3.Button">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:backgroundTint">@color/md_theme_dark_onError</item>
+    </style>
+    <style name="Theme.BlurryDialog" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="SecondaryButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/border_radius</item>
+        <item name="android:textColorHint">@color/dark_gray</item>
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="circularImageView">
+        <item name="android:background">@drawable/circle_background</item>
+    </style>
+
+    <style name="TimePickerBtnStyle" parent="TextAppearance.AppCompat.Widget.Button">
+        <item name="android:background">@drawable/border_radius</item>
+        <item name="android:textColorHint">@color/dark_gray</item>
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="TextViewStyleSignUp" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/round_spinner</item>
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:drawableEnd">@drawable/icon_google</item>
+    </style>
+
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/green_buttons</item>
+    </style>
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="SearchBar" parent="Widget.AppCompat.SearchView">
+        <item name="android:background">@drawable/border_radius</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:layout_width">320dp</item>
+        <item name="android:radius">50dp</item>
+        <item name="strokeColor">@color/gray</item>
+    </style>
+
+
+
+</resources>

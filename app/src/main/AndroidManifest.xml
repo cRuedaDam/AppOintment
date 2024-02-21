@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ReservApp"
+        tools:targetApi="31">
+        <activity
+            android:name=".commerce.view.activities.menu.specialities.CommerceAddSpeciality"
+            android:exported="false" />
+        <activity
+            android:name=".commerce.view.activities.menu.specialities.CommerceEditSpeciality"
+            android:exported="false" />
+        <activity
+            android:name=".commerce.view.activities.menu.specialities.CommerceSpecialities"
+            android:exported="false" />
+        <activity
+            android:name=".commerce.view.activities.menu.employees.CommerceAddEmployee"
+            android:exported="false" />
+        <activity
+            android:name=".commerce.view.activities.menu.employees.CommerceEditEmlpoyee"
+            android:exported="false" />
+        <activity
+            android:name=".commerce.view.activities.menu.employees.CommerceEmployees"
+            android:exported="false" />
+        <activity
+            android:name=".commerce.view.activities.menu.editProfile.ChangeCommercePassword"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".commerce.view.activities.menu.editProfile.ChangeCommerceSchedule"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".commerce.view.activities.menu.editProfile.ChangeCommercePhone"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".commerce.view.activities.menu.editProfile.ChangeCommerceEmail"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".commerce.view.activities.menu.editProfile.ChangeCommerceAddress"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".commerce.view.activities.menu.editProfile.ChangeCommerceName"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".commerce.view.activities.menu.editProfile.CommerceEditProfile"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".commerce.view.activities.menu.CommerceMenu"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".commerce.view.activities.CommerceSignUp"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".common.view.CustomerOrCommerce"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.CustomerHome"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".commerce.view.activities.home.CommerceHome"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.CustomerSignUp"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".commerce.view.activities.appointments.AppointmentCommerceView"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".common.view.Login"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".common.view.SplashScreen"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

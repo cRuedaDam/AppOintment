@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".commerce.view.activities.menu.specialities.CommerceEditSpeciality">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ly_top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/icon_back_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_title_edit_speciality"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar Especialidad"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/txt_edit_speciality"
+        style="@style/TextViewStyleSignUp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:text="Editar Especialidad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ly_top_menu" />
+
+    <EditText
+        android:id="@+id/edt_speciality_name"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="30dp"
+        android:hint="Nombre"
+        android:maxLines="1"
+        android:paddingLeft="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_edit_speciality" />
+
+    <EditText
+        android:id="@+id/edt_speciality_time_required"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="30dp"
+        android:hint="Tiempo requerido"
+        android:maxLines="1"
+        android:paddingLeft="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_speciality_name" />
+
+    <EditText
+        android:id="@+id/edt_speciality_price"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="30dp"
+        android:hint="Precio"
+        android:maxLines="1"
+        android:inputType="numberDecimal"
+        android:digits="1234567890."
+        android:paddingLeft="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_speciality_time_required" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_change_speciality"
+        style="@style/SecondaryButtonStyle"
+        android:background="@drawable/button_view_all_appointments"
+        android:text="Editar Especialidad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="100dp"/>
+
+    <TextView
+        android:id="@+id/txt_delete_speciality"
+        style="@style/TextViewStyleSignUp"
+        android:textColor="@color/red_cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_change_speciality"
+        android:text="Eliminar Especialidad"
+        android:padding="15dp"
+        android:layout_marginTop="15dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

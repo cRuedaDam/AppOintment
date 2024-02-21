@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_fragments"
+    app:startDestination="@id/customerHome">
+
+    <fragment
+        android:id="@+id/customerHome"
+        android:name="com.example.reservapp.user.fragments.bookAppointment.CustomerHomeFragment"
+        android:label="fragment_user_home"
+        tools:layout="@layout/fragment_customer_home" >
+        <action
+            android:id="@+id/action_customerHome_to_customerCategoriesAppoint"
+            app:destination="@id/customerCategoriesAppoint" />
+        <action
+            android:id="@+id/action_customerHome_to_detailsAppointment"
+            app:destination="@id/detailsAppointment" />
+        <action
+            android:id="@+id/action_customerHome_to_customerListAppoint"
+            app:destination="@id/customerListAppoint" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerCategoriesAppoint"
+        android:name="com.example.reservapp.user.fragments.bookAppointment.CustomerCategoriesAppoint"
+        android:label="fragment_user_categories_appoint"
+        tools:layout="@layout/fragment_customer_categories_appoint" >
+        <action
+            android:id="@+id/action_customerCategoriesAppoint_to_customerListAppoint"
+            app:destination="@id/customerListAppoint" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerListAppoint"
+        android:name="com.example.reservapp.user.fragments.bookAppointment.CustomerListAppoint"
+        android:label="fragment_user_list_appoint"
+        tools:layout="@layout/fragment_customer_list_appoint" >
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_customerListAppoint_to_customerChoiceAppoint"
+            app:destination="@id/customerChoiceAppoint" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerChoiceAppoint"
+        android:name="com.example.reservapp.user.fragments.bookAppointment.CustomerChoiceAppoint"
+        android:label="fragment_user_choice_appoint"
+        tools:layout="@layout/fragment_customer_choice_appoint">
+        <action
+            android:id="@+id/action_customerChoiceAppoint_to_customerListAvailability"
+            app:destination="@id/customerListAvailability" />
+        <argument
+            android:name="comm_name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerListAvailability"
+        android:name="com.example.reservapp.user.fragments.bookAppointment.CustomerListAvailability"
+        android:label="fragment_user_list_availability"
+        tools:layout="@layout/fragment_customer_list_availability" >
+        <action
+            android:id="@+id/action_customerListAvailability_to_customerSummaryAppoint"
+            app:destination="@id/customerSummaryAppoint" />
+        <argument
+            android:name="commerceAddress"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerSummaryAppoint"
+        android:name="com.example.reservapp.user.fragments.bookAppointment.CustomerSummaryAppoint"
+        android:label="fragment_user_summary_appoint"
+        tools:layout="@layout/fragment_customer_summary_appoint" >
+        <argument
+            android:name="hour"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsAppointment"
+        android:name="com.example.reservapp.user.fragments.cancelappointment.DetailsAppointment"
+        android:label="fragment_details_appointment"
+        tools:layout="@layout/fragment_details_appointment">
+        <argument
+            android:name="appointmentId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfile"
+        android:name="com.example.reservapp.user.fragments.editProfile.EditProfile"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfile_to_editPassword"
+            app:destination="@id/editPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPassword"
+        android:name="com.example.reservapp.user.fragments.editProfile.EditPassword"
+        android:label="fragment_edit_password"
+        tools:layout="@layout/fragment_edit_password" />
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.example.reservapp.user.fragments.favorites.Favorites"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favorites_to_customerChoiceAppoint"
+            app:destination="@id/customerChoiceAppoint" />
+    </fragment>
+    <fragment
+        android:id="@+id/historial"
+        android:name="com.example.reservapp.user.fragments.history.Historial"
+        android:label="fragment_historial"
+        tools:layout="@layout/fragment_historial" >
+        <action
+            android:id="@+id/action_historial_to_historyDetails"
+            app:destination="@id/historyDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchCommerceOrService"
+        android:name="com.example.reservapp.user.fragments.search.SearchCommerce"
+        android:label="fragment_search_commerce_or_service"
+        tools:layout="@layout/fragment_search_commerce" >
+        <action
+            android:id="@+id/action_searchCommerceOrService_to_customerChoiceAppoint"
+            app:destination="@id/customerChoiceAppoint" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyDetails"
+        android:name="com.example.reservapp.user.fragments.history.HistoryDetails"
+        android:label="fragment_history_details"
+        tools:layout="@layout/fragment_history_details" >
+        <action
+            android:id="@+id/action_historyDetails_to_historial"
+            app:destination="@id/historial" />
+        <argument
+            android:name="commerId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

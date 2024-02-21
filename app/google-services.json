@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "517645023320",
+    "project_id": "reservapp-a01c2",
+    "storage_bucket": "reservapp-a01c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517645023320:android:195d612a7f298b394eb22d",
+        "android_client_info": {
+          "package_name": "com.example.reservapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtfdpRG15LH4zh8YLuV-O7LRewgnnEsSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
