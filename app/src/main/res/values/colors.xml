@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--        App Colors      -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="navigation_bar">#09184D</color>
+    <color name="buttons">#7B5BF2</color>
+    <color name="titles">#2F2E2E</color>
+    <color name="info">#808085</color>
+    <color name="background">#EDF2FA</color>
+
+    <!--        System Colors      -->
+    <color name="red_cancel_button">#D20A3A</color>
+    <color name="blue_link">#2B62F0</color>
+
+</resources>

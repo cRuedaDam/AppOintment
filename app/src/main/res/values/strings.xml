@@ -1,0 +1,170 @@
+<resources>
+
+    <!--       Spinner         -->
+
+    <string-array name="spinner_edit_profile_items">
+        <item>Cambiar nombre</item>
+        <item>Cambiar direción</item>
+        <item>Cambiar E-Mail"</item>
+        <item>Cambiar número de teléfono</item>
+        <item>Cambiar horario</item>
+        <item>Eliminar cuenta</item>
+    </string-array>
+
+
+    <string name="spinner_item_1">Selecciona una opción</string>
+
+    <string name="app_name">ReservApp</string>
+
+    <!--       Auth user and commerce         -->
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_pass">Repetir contraseña</string>
+    <string name="link_log_in_msg">Ya tienes una cuenta? click aqui </string>
+    <string name="link_sign_in_msg">Haz click aqui </string>
+    <string name="sign_in_msg">No tienes una cuenta?</string>
+    <string name="sign_in_msg_already_account">Ya tienes una cuenta?</string>
+    <string name="text_btn_google">O registrate con</string>
+    <string name="email">Email</string>
+    <string name="birthdate">Fecha de nacimiento</string>
+    <string name="address_commerce">Dirección</string>
+    <string name="schedule">Horario</string>
+    <string name="open">Desde</string>
+    <string name="close">Hasta</string>
+    <string name="phone_number">Teléfono</string>
+    <string name="cat">Categoría</string>
+
+    <!--                buttons texts                   -->
+    <string name="accept">Aceptar</string>
+    <string name="refuse">Cancelar</string>
+    <string name="sign_up">Regístrate</string>
+    <string name="google">Google</string>
+    <string name="appointment">Pedir cita</string>
+    <string name="cont">Continuar</string>
+    <string name="resv">Reservar</string>
+    <string name="cancel_appoint">Anular cita</string>
+    <string name="save">Guardar</string>
+    <string name="all_appoint">Todas las citas</string>
+    <string name="usr_all_appoint">Citas</string>
+    <string name="delete_employee">Emilar empleado</string>
+    <string name="ejm_email">Email@ejemplo</string>
+    <string name="add_fav">Añadir a favoritos</string>
+
+    <!--                search                   -->
+    <string name="search">Buscar empleado</string>
+    <string name="search_name_comm">Buscar por nombre comercio</string>
+    <string name="search_region">Buscar por localidad</string>
+    <string name="search_menu_usr">Categorías o comercio</string>
+    <string name="search_appoint_comm">Buscar por fecha</string>
+
+    <!--                Categories                   -->
+    <string name="aes">Estética</string>
+    <string name="hair_dresser">Peluquería</string>
+    <string name="pet">Peluquería canina</string>
+    <string name="nail_salon">Salón de uñas</string>
+    <string name="fisio">Fisioterapia</string>
+
+    <string-array name="category_items">
+        <item>- Tipo de actividad -</item>
+        <item>Estética</item>
+        <item>Peluquería</item>
+        <item>Peluquería canina</item>
+        <item>Salón de uñas</item>
+        <item>Fisioterapia</item>
+    </string-array>
+
+    <string-array name="list_specialties">
+        <item>- Especialidades -</item>
+    </string-array>
+
+    <!--                drop down                   -->
+    <string name="dropd_app_usr_date">Fecha</string>
+    <string name="dropd_app_usr_serv">Servicio</string>
+    <string name="dropd_app_usr_emp">Empleado</string>
+
+
+    <!--                texts                  -->
+    <string name="title_appoint_usr">Categorías</string>
+    <string name="title_appoint_usr2">Cita</string>
+    <string name="title_appoint_usr3">Tu reserva</string>
+    <string name="resev_usr_commerce">Contacto del comercio</string>
+    <string name="resev_usr_details">Tus datos personales</string>
+    <string name="resev_usr_opt">Añadir petición (opcional)</string>
+    <string name="del_profile">Eliminar cuenta</string>
+    <string name="choose_date">Fecha</string>
+    <string name="chosse_service">Servicio</string>
+    <string name="choose_employee">Elegir empleado</string>
+
+    <!--                común menu                  -->
+    <string name="edt_profile">Editar perfil</string>
+    <string name="search_menu">Buscar</string>
+    <string name="home">Inicio</string>
+    <string name="dark_mode">Versión nocturna</string>
+    <string name="hist">Historial</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="commerce_or_customer">!! Vamos a crear tu cuenta !!</string>
+    <string name="i_am_a_commerce">Soy un Comercio</string>
+    <string name="i_am_a_customer">Soy un Cliente</string>
+
+    <!--                Menu user               -->
+    <string name="fav">Favoritos</string>
+    <string name="search_usr">Buscar local o servicio</string>
+
+    <!--                Menu commerce               -->
+    <string name="employees">Empleados</string>
+    <string name="add_employee">Añadir empleado</string>
+
+    <!--                Alerts                  -->
+    <string name="del_emp">Estás seguro que quieres eliminar el empleado?</string>
+    <string name="del_esp">Estás seguro que quieres eliminar la especialidad?</string>
+    <string name="del_appoint">Estás seguro que quieres anular la cita?</string>
+    <string name="del_usr">Estás seguro que quieres eliminar la cuenta?</string>
+    <string name="error_msg">Error</string>
+    <string name="empty_fields">Todos los campos deben estar rellenos</string>
+    <string name="auth_fail">Se ha producido un error autentificando al usuario</string>
+    <string name="short_password">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="not_same_password">Las contraseñas deben ser iguales</string>
+    <string name="unsuccessful_user_creation">No se pudo crear el usuario</string>
+    <string name="user_not_found">Usuario no registrado</string>
+    <string name="unsuccessful_user_saved_data">Error al guardar datos del usuario</string>
+    <string name="login_fail">Fallo al iniciar sesión</string>
+
+    <!--                ShowLoading                 -->
+    <string name="wait_msg">Espere por favor...</string>
+
+    <!--                Prefs File                  -->
+    <string name="prefs_file">com.reservapp.PREFERENCE_FILE_KEY</string>
+    <string name="default_web_client_id">517645023320-glpqs9pi88avtden8cdftb38m74f3u1r.apps.googleusercontent.com</string>
+
+    <!-- config auth -->
+    <string name="current_password">Contraseña actual</string>
+    <string name="new_password">Nueva contraseña</string>
+    <string name="msg_toast">Perfil editado</string>
+    <string name="msg_toast_password">Contraseña cambiada correctamente</string>
+    <string name="msg_toast_password_error">Las contraseñas no coinciden</string>
+    <string name="msg_toast_email">Confirmación por email enviada</string>
+
+    <!-- extras -->
+
+    <string name="icon_category">icon category</string>
+    <string name="addressCommerce">%1$s %2$s, %3$s %4$s %5$s</string>
+    <string name="customerName">"%1$s %2$s "</string>
+    <string name="forward_button">información adicional</string>
+    <string name="titleAvailability">Selecciona una de las citas disponibles</string>
+    <string name="button_icon">imagen de servicio</string>
+    <string name="calendarButton">calendario icono</string>
+    <string name="textOpt">Mensaje</string>
+    <string name="imgTextSpeakable">icono hora cita</string>
+    <string name="buton_clicado">boton clicado</string>
+    <string name="detalles_cita_anterior">detalles cita anterior</string>
+    <string name="remove_from_favs">Quitar de favoritos</string>
+    <string name="edit_img_profile">Editar imagen</string>
+    <string name="date_pattern">d-M-yyyy</string>
+    <string name="fav_commerce">Comercio añadido de tus favoritos</string>
+    <string name="eliminate_fav_commerce">Comercio eliminado de tus favoritos</string>
+    <string name="home_empty_state">No tienes ninguna cita pendiente</string>
+    <string name="fav_empty_state">No tienes ningún comercio en tus favoritos</string>
+    <string name="hist_empty_state">No tienes ninguna cita pasada</string>
+
+</resources>
