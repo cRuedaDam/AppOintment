@@ -13,6 +13,15 @@
         android:theme="@style/Theme.AppOintment"
         tools:targetApi="31">
         <activity
+            android:name=".commerce.view.CommerceSignUp"
+            android:exported="false" />
+        <activity
+            android:name=".user.view.CustomerSignUp"
+            android:exported="false" />
+        <activity
+            android:name=".common.view.CustommerOrCommerce"
+            android:exported="false" />
+        <activity
             android:name=".common.view.Login"
             android:exported="false" />
         <activity

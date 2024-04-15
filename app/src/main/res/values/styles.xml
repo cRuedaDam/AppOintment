@@ -13,9 +13,23 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <style name="MainButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/border_radius_button</item>
         <item name="android:textColorHint">@color/buttons</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/border_radius</item>
+        <item name="android:drawableEnd">@drawable/border_radius</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:textSize">15sp</item>

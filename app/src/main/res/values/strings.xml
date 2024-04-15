@@ -18,9 +18,15 @@
 
     <!--       Auth user and commerce         -->
     <string name="name">Nombre</string>
+    <string name="street_name">Nombre de la calle</string>
+    <string name="street_type">Tipo de Via</string>
+    <string name="street_number">Número de la calle</string>
+    <string name="postal_code">Codigo postal</string>
+    <string name="localidad">Localidad</string>
+    <string name="municipio">Municipio</string>
     <string name="last_name">Apellido</string>
     <string name="password">Contraseña</string>
-    <string name="confirm_pass">Repetir contraseña</string>
+    <string name="confirm_pass">Confirmar contraseña</string>
     <string name="link_log_in_msg">Ya tienes una cuenta? click aqui </string>
     <string name="link_sign_in_msg">Haz click aqui </string>
     <string name="sign_in_msg">No tienes una cuenta?</string>
@@ -29,6 +35,7 @@
     <string name="email">Email</string>
     <string name="birthdate">Fecha de nacimiento</string>
     <string name="address_commerce">Dirección</string>
+    <string name="auth">Autentificación</string>
     <string name="schedule">Horario</string>
     <string name="open">Desde</string>
     <string name="close">Hasta</string>
