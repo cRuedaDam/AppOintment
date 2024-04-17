@@ -28,81 +28,74 @@
                 android:src="@drawable/title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_commerce_data"
                 style="@style/TextViewStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="50dp"
-                app:layout_constraintTop_toBottomOf="@id/img_logo"
+                android:text="Datos del establecimiento"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="Datos del establecimiento"/>
+                app:layout_constraintTop_toBottomOf="@id/img_logo" />
 
             <EditText
                 android:id="@+id/edt_name"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/name"
                 android:maxLines="1"
                 android:paddingLeft="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_commerce_data"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt_commerce_data" />
 
             <EditText
                 android:id="@+id/edt_phone_number"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/phone_number"
+                android:inputType="phone"
                 android:maxLines="1"
                 android:paddingStart="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_name"
-                android:inputType="phone"/>
+                app:layout_constraintTop_toBottomOf="@+id/edt_name" />
 
             <Spinner
                 android:id="@+id/spinner_categories"
                 style="@style/SpinnerStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
-                app:layout_constraintTop_toBottomOf="@id/edt_phone_number"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:entries="@array/category_items"
                 android:paddingStart="30dp"
-                android:entries="@array/category_items"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edt_phone_number" />
 
             <TextView
                 android:id="@+id/txt_address"
                 style="@style/TextViewStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginStart="50dp"
-                app:layout_constraintTop_toBottomOf="@id/spinner_categories"
+                android:text="@string/address_commerce"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/address_commerce"/>
+                app:layout_constraintTop_toBottomOf="@id/spinner_categories" />
 
             <EditText
                 android:id="@+id/edt_street_type"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/street_type"
                 android:maxLines="1"
                 android:paddingStart="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_address"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt_address" />
 
             <EditText
                 android:id="@+id/edt_street_name"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/street_name"
                 android:maxLines="1"
                 android:paddingStart="40dp"
@@ -115,24 +108,22 @@
                 android:id="@+id/edt_street_number"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/street_number"
+                android:inputType="number"
                 android:maxLines="1"
                 android:paddingStart="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_street_name"
-                android:inputType="number"/>
+                app:layout_constraintTop_toBottomOf="@+id/edt_street_name" />
 
             <EditText
                 android:id="@+id/edt_city"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/localidad"
                 android:maxLines="1"
-                android:paddingLeft="40dp"
+                android:paddingStart="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edt_street_number" />
@@ -141,7 +132,6 @@
                 android:id="@+id/edt_state"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/municipio"
                 android:maxLines="1"
                 android:paddingStart="40dp"
@@ -153,7 +143,6 @@
                 android:id="@+id/edt_postal_code"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/postal_code"
                 android:inputType="number"
                 android:maxLines="1"
@@ -166,16 +155,14 @@
                 android:id="@+id/txt_auth"
                 style="@style/TextViewStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginStart="50dp"
-                app:layout_constraintTop_toBottomOf="@id/edt_postal_code"
+                android:text="@string/auth"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/auth"/>
+                app:layout_constraintTop_toBottomOf="@id/edt_postal_code" />
 
             <EditText
                 android:id="@+id/edt_email"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/email"
                 android:maxLines="1"
                 android:paddingStart="40dp"
@@ -188,7 +175,6 @@
                 android:id="@+id/edt_password"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:maxLines="1"
@@ -201,7 +187,6 @@
                 android:id="@+id/edt_confirm_password"
                 style="@style/EditTextStyle"
                 android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 android:hint="@string/confirm_pass"
                 android:inputType="textPassword"
                 android:maxLines="1"
@@ -213,11 +198,10 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_up"
                 style="@style/MainButtonStyle"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/border_radius_button"
                 android:text="@string/sign_up"
                 android:textColor="@color/white"
-                android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_confirm_password" />
@@ -227,11 +211,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_sign_up"
-                android:layout_marginBottom="50dp">
+                app:layout_constraintTop_toBottomOf="@id/btn_sign_up">
 
                 <TextView
                     android:id="@+id/txt_no_account"
@@ -244,8 +228,8 @@
                     android:id="@+id/txt_link_to_log_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginBottom="50dp"
-                    android:layout_marginLeft="10dp"
                     android:text="@string/link_sign_in_msg"
                     android:textColor="@color/blue_link"
                     android:textSize="15sp" />

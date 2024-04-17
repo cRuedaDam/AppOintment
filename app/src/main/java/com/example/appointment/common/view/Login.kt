@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.example.appointment.R
-import com.example.appointment.commerce.view.CommerceHome
+import com.example.appointment.commerce.view.activities.home.CommerceHome
 import com.example.appointment.databinding.ActivityLoginBinding
 import com.example.reservapp.commerce.model.AuthCommerce
 import com.example.reservapp.common.viewModel.Alerts

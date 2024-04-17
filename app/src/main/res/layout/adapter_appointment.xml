@@ -8,7 +8,7 @@
         android:id="@+id/txt_no_appointments_today"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¡Vaya, parece que no hay citas!"
+        android:text="@string/no_appointments"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/txt_customer_name"
-                style="@style/TextViewStyle"
+                style="@style/TextViewTitleStyle"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="3dp"
                 android:text="Nombre del cliente"
@@ -48,7 +48,7 @@
 
             <TextView
                 android:id="@+id/txt_customer_service"
-                style="@style/TextViewStyle"
+                style="@style/TextViewTitleStyle"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="3dp"
                 android:text="Servicio"
@@ -67,7 +67,7 @@
 
                 <TextView
                     android:id="@+id/txt_date"
-                    style="@style/TextViewStyle"
+                    style="@style/TextViewTitleStyle"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="3dp"
                     android:text="Fecha"
@@ -76,7 +76,7 @@
 
                 <TextView
                     android:id="@+id/txt_at"
-                    style="@style/TextViewStyle"
+                    style="@style/TextViewTitleStyle"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="3dp"
                     android:text="a las"
@@ -86,7 +86,7 @@
 
                 <TextView
                     android:id="@+id/txt_time"
-                    style="@style/TextViewStyle"
+                    style="@style/TextViewTitleStyle"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="3dp"
                     android:text="Hora"

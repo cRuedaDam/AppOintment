@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginBottom="15dp"
             android:padding="7dp"
             android:src="@drawable/icon_back_arrow"
@@ -39,7 +39,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Citas"/>
+            android:text="@string/appointments"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="Cita cliente" />
+                android:text="@string/customer_appoitnment" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/icon_specialities"
-            android:paddingLeft="3dp"
+            android:paddingStart="3dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/txt_service_type"
             app:layout_constraintTop_toTopOf="parent"
@@ -97,11 +97,11 @@
             android:id="@+id/txt_service_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             app:layout_constraintStart_toEndOf="@id/img_service_type"
             app:layout_constraintTop_toTopOf="@id/img_service_type"
             app:layout_constraintBottom_toBottomOf="@id/img_service_type"
-            android:text="Peluquería"/>
+            android:text="@string/hair_dresser"/>
 
         <ImageView
             android:id="@+id/img_calendar"
@@ -116,21 +116,21 @@
             android:id="@+id/txt_appointment_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="3dp"
             app:layout_constraintStart_toEndOf="@id/img_calendar"
             app:layout_constraintTop_toTopOf="@id/img_calendar"
-            android:text="Miércoles, Noviembre 15"/>
+            android:text="@string/date_example"/>
 
         <TextView
             android:id="@+id/txt_appointment_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginBottom="3dp"
             app:layout_constraintStart_toEndOf="@id/img_calendar"
             app:layout_constraintBottom_toBottomOf="@id/img_calendar"
-            android:text="17:00 h"/>
+            android:text="@string/time_example"/>
 
         <TextView
             android:id="@+id/txt_contact_info"
@@ -139,7 +139,7 @@
             android:layout_marginTop="40dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_calendar"
-            android:text="Información del contacto"/>
+            android:text="@string/contact_info"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ly_contact_info"
@@ -158,8 +158,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="15dp"
-                android:text="Nombre"/>
+                android:layout_marginStart="15dp"
+                android:text="@string/name"/>
 
             <TextView
                 android:id="@+id/txt_customer_last_name"
@@ -167,8 +167,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@id/txt_customer_full_name"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="5dp"
-                android:text="Apellido"/>
+                android:layout_marginStart="5dp"
+                android:text="@string/last_name"/>
 
             <TextView
                 android:id="@+id/txt_customer_email_info"
@@ -176,8 +176,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_customer_full_name"
-                android:layout_marginLeft="15dp"
-                android:text="emaildelcliente@gmail.com"/>
+                android:layout_marginStart="15dp"
+                android:text="@string/ejm_email"/>
 
             <TextView
                 android:id="@+id/txt_customer_phone_number"
@@ -185,8 +185,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_customer_email_info"
-                android:layout_marginLeft="15dp"
-                android:text="678446524"/>
+                android:layout_marginStart="15dp"
+                android:text="@string/phone_number"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -194,10 +194,8 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_delete_appointment"
         style="@style/MainButtonStyle"
-        android:layout_marginHorizontal="50dp"
         android:backgroundTint="@color/red_cancel_button"
-        android:text="Anular Cita"
-        android:textColor="@color/white"
+        android:text="@string/cancel_appoint"
         app:layout_constraintTop_toBottomOf="@id/ly_appointment"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="20dp"

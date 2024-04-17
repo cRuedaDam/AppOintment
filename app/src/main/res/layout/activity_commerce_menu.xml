@@ -6,4 +6,125 @@
     android:layout_height="match_parent"
     tools:context=".commerce.view.activities.menu.CommerceMenu">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ly_top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/icon_back_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_menu"
+            style="@style/TextViewTitleStyle"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Menú Principal"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/iv_edit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/icon_manage_acc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ly_top_menu" />
+
+    <TextView
+        android:id="@+id/txt_edit_profile"
+        style="@style/TextViewTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:padding="15dp"
+        android:text="Editar perfil"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_edit_profile"
+        app:layout_constraintStart_toEndOf="@+id/iv_edit_profile"
+        app:layout_constraintTop_toTopOf="@+id/iv_edit_profile" />
+
+    <ImageView
+        android:id="@+id/iv_employees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/icon_employees"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_edit_profile" />
+
+    <TextView
+        android:id="@+id/txt_employees"
+        style="@style/TextViewTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:padding="15dp"
+        android:text="Empleados"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_employees"
+        app:layout_constraintStart_toEndOf="@+id/iv_employees"
+        app:layout_constraintTop_toTopOf="@+id/iv_employees" />
+
+    <ImageView
+        android:id="@+id/iv_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/icon_specialities"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_employees" />
+
+    <TextView
+        android:id="@+id/txt_specialities"
+        style="@style/TextViewTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:padding="15dp"
+        android:text="Especialidades"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_history"
+        app:layout_constraintStart_toEndOf="@+id/iv_history"
+        app:layout_constraintTop_toTopOf="@+id/iv_history" />
+
+    <ImageView
+        android:id="@+id/iv_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/icon_logout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_logout"
+        style="@style/TextViewTitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Cerrar Sesión"
+        android:textColor="@color/red_cancel_button"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_logout"
+        app:layout_constraintStart_toEndOf="@+id/iv_logout"
+        app:layout_constraintTop_toTopOf="@+id/iv_logout" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

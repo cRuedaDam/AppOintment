@@ -1,4 +1,4 @@
-package com.example.appointment.commerce.view
+package com.example.appointment.commerce.view.activities.home
 
 import android.app.Activity
 import android.content.Intent
@@ -12,7 +12,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.appointment.R
 import com.example.appointment.commerce.view.activities.menu.CommerceMenu
 import com.example.appointment.commerce.view.adapters.AppointmentAdapter
 import com.example.appointment.commerce.viewModel.FireBaseManager

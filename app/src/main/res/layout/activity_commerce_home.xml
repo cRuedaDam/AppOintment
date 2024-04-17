@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".commerce.view.CommerceHome">
+    tools:context=".commerce.view.activities.home.CommerceHome">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ly_top_menu"
@@ -66,14 +66,14 @@
 
             <TextView
                 android:id="@+id/txt_commerce_name"
-                style="@style/TextViewStyle"
+                style="@style/TextViewTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre del comercio" />
+                android:text="@string/commerce_name" />
 
             <TextView
                 android:id="@+id/txt_commerce_email"
-                style="@style/TextViewStyle"
+                style="@style/TextViewTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -144,11 +144,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="¡Vaya, parece que no tienes citas para este día!"
+            android:text="@string/no_appointments"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ly_appointments_date" />
+            app:layout_constraintTop_toBottomOf="@id/ly_appointments_date"
+            android:visibility="gone"/>
 
         <ScrollView
             android:id="@+id/scroll_appointments"
@@ -166,10 +167,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_appointments"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginBottom="30dp"/>
 
         </ScrollView>
 
@@ -178,9 +179,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_view_all_appointments"
         style="@style/MainButtonStyle"
-        android:layout_marginHorizontal="50dp"
-        android:text="Todas las citas"
-        android:textColor="@color/white"
+        android:text="@string/all_appoint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -191,6 +190,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_begin="622dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

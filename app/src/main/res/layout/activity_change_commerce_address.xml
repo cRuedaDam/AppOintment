@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".commerce.view.activities.menu.editProfile.ChangeCommerceAddress">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ly_top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/icon_back_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_edit_address"
+            style="@style/TextViewTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar Dirección"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/txt_address"
+        style="@style/TextViewStyle"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/address_commerce"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ly_top_menu" />
+
+    <EditText
+        android:id="@+id/edt_street_type"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="30dp"
+        android:hint="@string/street_type"
+        android:maxLines="1"
+        android:paddingLeft="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_address" />
+
+    <EditText
+        android:id="@+id/edt_street_name"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="30dp"
+        android:hint="Nombre de la calle"
+        android:maxLines="1"
+        android:paddingLeft="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_street_type" />
+
+    <EditText
+        android:id="@+id/edt_street_number"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="30dp"
+        android:hint="Número de la calle"
+        android:inputType="number"
+        android:maxLines="1"
+        android:paddingLeft="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_street_name" />
+
+    <EditText
+        android:id="@+id/edt_city"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="30dp"
+        android:hint="Localidad"
+        android:maxLines="1"
+        android:paddingLeft="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_street_number" />
+
+    <EditText
+        android:id="@+id/edt_state"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="30dp"
+        android:hint="Municipio"
+        android:maxLines="1"
+        android:paddingLeft="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_city" />
+
+    <EditText
+        android:id="@+id/edt_postal_code"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="30dp"
+        android:hint="Código postal"
+        android:inputType="number"
+        android:maxLines="1"
+        android:paddingLeft="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_state" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_change_address"
+        style="@style/MainButtonStyle"
+        android:text="Cambiar Dirección"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_postal_code" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,7 +54,7 @@
     <string name="save">Guardar</string>
     <string name="all_appoint">Todas las citas</string>
     <string name="usr_all_appoint">Citas</string>
-    <string name="delete_employee">Emilar empleado</string>
+    <string name="delete_employee">Eliminar empleado</string>
     <string name="ejm_email">Email@ejemplo</string>
     <string name="add_fav">Añadir a favoritos</string>
 
@@ -173,5 +173,31 @@
     <string name="home_empty_state">No tienes ninguna cita pendiente</string>
     <string name="fav_empty_state">No tienes ningún comercio en tus favoritos</string>
     <string name="hist_empty_state">No tienes ninguna cita pasada</string>
+    <string name="no_appointments">¡Vaya, parece que no tienes citas para este día!</string>
+    <string name="fill_new_name">Ingresa el nuevo nombre</string>
+    <string name="new_name">Nuevo Nombre</string>
+    <string name="change_name">Cambiar nombre</string>
+    <string name="contact_info">Información del contacto</string>
+    <string name="date_example">Miércoles, Noviembre 15</string>
+    <string name="customer_appoitnment">Cita cliente</string>
+    <string name="appointments">Citas</string>
+    <string name="time_example">17:30h</string>
+    <string name="fill_new_email">Ingresa el nuevo email</string>
+    <string name="change_email">Cambiar Email</string>
+    <string name="change_phone">Cambiar Teléfono</string>
+    <string name="add_new_phone">Ingresa el nuevo número</string>
+    <string name="new_phone">Nuevo Número</string>
+    <string name="commerce_name">Nombre del comercio</string>
+    <string name="add_speciality">Añadir especialidad</string>
+    <string name="no_specialities_yet">Aún no has añadido ninguna especialidad</string>
+    <string name="find_specialities">Buscar especialidad</string>
+    <string name="specialities">Especialidades</string>
+    <string name="edit_speciality">Editar Especialidad</string>
+    <string name="time_required">Tiempo requerido</string>
+    <string name="delete_speciality">Eliminar Especialidad</string>
+    <string name="price">Precio</string>
+    <string name="edit_employee">Editar Empleado</string>
+    <string name="check_in_time">Hora de entrada</string>
+    <string name="check_out_time">Hora de salida</string>
 
 </resources>

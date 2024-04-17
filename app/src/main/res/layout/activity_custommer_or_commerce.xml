@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/txt_customer_or_commerce"
-            style="@style/TextViewStyle"
+            style="@style/TextViewTitleStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
