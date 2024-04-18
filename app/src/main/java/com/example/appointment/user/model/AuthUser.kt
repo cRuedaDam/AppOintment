@@ -1,4 +1,4 @@
-package com.example.reservapp.user.model
+package com.example.appointment.user.model
 
 import java.io.Serializable
 

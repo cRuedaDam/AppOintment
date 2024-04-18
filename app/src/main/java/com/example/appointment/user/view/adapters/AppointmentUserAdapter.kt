@@ -1,4 +1,4 @@
-package com.example.appointment.commerce.view.adapters
+package com.example.appointment.user.view.adapters
 
 import android.content.Intent
 import android.util.Log
@@ -9,18 +9,18 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appointment.R
-import com.example.appointment.commerce.view.activities.appointments.AppointmentCommerceView
 import com.example.appointment.common.model.Appointment
+import com.example.appointment.user.view.activities.appointments.AppointmentCustomerView
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AppointmentAdapter(private val appointments: List<Appointment>) :
-    RecyclerView.Adapter<AppointmentAdapter.AppointmentViewHolder>() {
+class AppointmentUserAdapter(private val appointments: List<Appointment>) :
+    RecyclerView.Adapter<AppointmentUserAdapter.AppointmentUserViewHolder>() {
 
     private val db = FirebaseFirestore.getInstance()
 
-    class AppointmentViewHolder(itemView: View) :
+    class AppointmentUserViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        val txtCustomerName: TextView = itemView.findViewById(R.id.txt_customer_name)
+        val txtCommerceName: TextView = itemView.findViewById(R.id.txt_business_name)
         val txtCustomerService: TextView = itemView.findViewById(R.id.txt_customer_service)
         val txtDate: TextView = itemView.findViewById(R.id.txt_date)
         val txtTime: TextView = itemView.findViewById(R.id.txt_time)
@@ -28,17 +28,17 @@ class AppointmentAdapter(private val appointments: List<Appointment>) :
         val lyAppointments: ConstraintLayout = itemView.findViewById(R.id.ly_appointments)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppointmentViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppointmentUserViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.adapter_commerce_appointment, parent, false)
-        return AppointmentViewHolder(itemView)
+            LayoutInflater.from(parent.context).inflate(R.layout.adapter_customer_appointment, parent, false)
+        return AppointmentUserViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
         return if (appointments.isEmpty()) 1 else appointments.size
     }
 
-    override fun onBindViewHolder(holder: AppointmentViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AppointmentUserViewHolder, position: Int) {
 
         if (appointments.isEmpty()) {
             holder.txtNoAppointments.visibility = View.VISIBLE
@@ -50,11 +50,11 @@ class AppointmentAdapter(private val appointments: List<Appointment>) :
 
             val currentAppointment = appointments[position]
 
-            Log.d("AdapterData", "Customer Name: ${currentAppointment.userId}")
+            Log.d("AdapterData", "Commerce Name: ${currentAppointment.commerceName}")
             Log.d("AdapterData", "Service ID: ${currentAppointment.serviceId}")
             Log.d("AdapterData", "User ID: ${currentAppointment.userId}")
 
-            holder.txtCustomerName.text = currentAppointment.userId
+            holder.txtCommerceName.text = currentAppointment.commerceName
             holder.txtCustomerService.text = currentAppointment.serviceId
             holder.txtDate.text = currentAppointment.appointmentDate
             holder.txtTime.text = currentAppointment.appointmentTime
@@ -65,7 +65,7 @@ class AppointmentAdapter(private val appointments: List<Appointment>) :
                 var appointmentId: String = ""
 
                 db.collection("appointments")
-                    .whereEqualTo("commerce_id", currentAppointment.commerceId)
+                    .whereEqualTo("user_id", currentAppointment.userId)
                     .get()
                     .addOnSuccessListener {
                         try {
@@ -77,33 +77,27 @@ class AppointmentAdapter(private val appointments: List<Appointment>) :
                                     .document(appointmentId)
                                     .get()
                                     .addOnSuccessListener { documentSnapshot ->
-                                        var userId = ""
+                                        var commerceId = ""
 
                                         if (documentSnapshot.exists()) {
-                                            userId =
-                                                documentSnapshot.getString("user_id").toString()
+                                            commerceId =
+                                                documentSnapshot.getString("commerce_id").toString()
                                             Log.d(
                                                 "TAG",
-                                                "User ID for Appointment $appointmentId: $userId"
+                                                "Commerce ID for Appointment $appointmentId: $commerceId"
                                             )
 
-                                            val intent =
-                                                Intent(context, AppointmentCommerceView::class.java)
-                                            intent.putExtra("userId", userId)
+                                            val currentAppointment = appointments[position]
+                                            val appointmentId = currentAppointment.appointmentId
+                                            val context = holder.itemView.context
+
+                                            val intent = Intent(context, AppointmentCustomerView::class.java)
+                                            intent.putExtra("commerceId", currentAppointment.commerceId)
                                             intent.putExtra("appointmentId", appointmentId)
-                                            intent.putExtra("userName", currentAppointment.userId)
-                                            intent.putExtra(
-                                                "appointmentDate",
-                                                currentAppointment.appointmentDate
-                                            )
-                                            intent.putExtra(
-                                                "appointmentTime",
-                                                currentAppointment.appointmentTime
-                                            )
-                                            intent.putExtra(
-                                                "serviceId",
-                                                currentAppointment.serviceId
-                                            )
+                                            intent.putExtra("commerceName", currentAppointment.commerceName)
+                                            intent.putExtra("appointmentDate", currentAppointment.appointmentDate)
+                                            intent.putExtra("appointmentTime", currentAppointment.appointmentTime)
+                                            intent.putExtra("serviceId", currentAppointment.serviceId)
                                             context.startActivity(intent)
 
                                         } else {

@@ -79,6 +79,25 @@ class FireBaseManager {
             }
     }
 
+    fun getServiceNameByIds(serviceId: String, commerceId: String, onComplete: (String?) -> Unit) {
+        val serviceRef = firestore.collection("commerces").document(commerceId)
+            .collection("specialities").document(serviceId)
+
+        serviceRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val serviceName = document.getString("name")
+                    onComplete(serviceName)
+                } else {
+                    onComplete(null)
+                }
+            }
+            .addOnFailureListener { exception ->
+                onComplete(null)
+                println("Error al obtener el nombre del servicio: $exception")
+            }
+    }
+
     fun getServiceNameById(serviceId: String, onComplete: (String) -> Unit) {
         val currentCommerce = FirebaseAuth.getInstance().currentUser
         val commerceId = currentCommerce?.uid
@@ -141,6 +160,25 @@ class FireBaseManager {
     }
 
     //Commerces
+    fun getCommerceNameByUid(commerceId: String, onComplete: (String) -> Unit) {
+        firestore.collection("commerces")
+            .document(commerceId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    val commerceName = documentSnapshot.getString("commerce_name")
+                    onComplete.invoke(
+                        commerceName ?: ""
+                    ) // Invoca la lambda con el nombre o una cadena vacía si es nulo
+                } else {
+                    onComplete.invoke("") // Invoca la lambda con una cadena vacía si el documento no existe
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("FirestoreError", "Error getting commerce document: ${e.message}")
+                onComplete.invoke("") // Invoca la lambda con una cadena vacía en caso de error
+            }
+    }
     fun changeCommerceName(commerceId: String, newCommerceName: String){
         val commerceRef = firestore.collection("commerces").document(commerceId)
         commerceRef.update("commerce_name", newCommerceName)

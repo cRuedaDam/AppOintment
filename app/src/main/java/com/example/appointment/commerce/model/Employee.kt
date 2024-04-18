@@ -2,7 +2,7 @@ package com.example.appointment.commerce.model
 
 import java.io.Serializable
 
-class Employee(
+data class Employee(
     var name: String = "",
     var lastName: String = "",
     var specialities: String? = null,

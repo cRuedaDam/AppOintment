@@ -178,6 +178,7 @@
     <string name="new_name">Nuevo Nombre</string>
     <string name="change_name">Cambiar nombre</string>
     <string name="contact_info">Información del contacto</string>
+    <string name="business_info">Información del centro</string>
     <string name="date_example">Miércoles, Noviembre 15</string>
     <string name="customer_appoitnment">Cita cliente</string>
     <string name="appointments">Citas</string>
@@ -199,5 +200,9 @@
     <string name="edit_employee">Editar Empleado</string>
     <string name="check_in_time">Hora de entrada</string>
     <string name="check_out_time">Hora de salida</string>
+    <string name="user_email">email_del_usuario@gmail.com</string>
+    <string name="today">Hoy</string>
+    <string name="user_name">Nombre del usuario</string>
+    <string name="history">Historial</string>
 
 </resources>

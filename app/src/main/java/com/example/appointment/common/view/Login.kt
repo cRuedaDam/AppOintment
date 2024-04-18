@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.example.appointment.R
+import com.example.appointment.commerce.model.AuthCommerce
 import com.example.appointment.commerce.view.activities.home.CommerceHome
 import com.example.appointment.databinding.ActivityLoginBinding
-import com.example.reservapp.commerce.model.AuthCommerce
+import com.example.appointment.user.model.AuthUser
+import com.example.appointment.user.view.activities.home.UserHome
 import com.example.reservapp.common.viewModel.Alerts
-import com.example.reservapp.user.model.AuthUser
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -81,13 +82,12 @@ class Login : AppCompatActivity() {
      * Esta función hace un intent a la pantalla principal de cliente
      * Recogiendo el email del usuario y el tipo de proveedor
      */
-    //private fun goCustomerHome(customer: AuthUser) {
-    /*private fun goCustomerHome(customer: AuthUser) {
-        val intent = Intent(this@Login, CustomerHome::class.java).apply {
+    private fun goCustomerHome(customer: AuthUser) {
+        val intent = Intent(this@Login, UserHome::class.java).apply {
             putExtra("customer", customer)
         }
         startActivity(intent)
-    }*/
+    }
 
     /**
      * Esta función realiza el inicio de sesión mediante email y password
@@ -148,7 +148,7 @@ class Login : AppCompatActivity() {
                         )
                         // Usuario regular, redirigir a la pantalla principal de usuarios
                         launch(Dispatchers.Main) {
-                            //goCustomerHome(customer)
+                            goCustomerHome(customer)
                             alerts.hideLoading()
                         }
                     } else {

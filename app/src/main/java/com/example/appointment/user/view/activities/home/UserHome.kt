@@ -1,4 +1,4 @@
-package com.example.appointment.commerce.view.activities.home
+package com.example.appointment.user.view.activities.home
 
 import android.app.Activity
 import android.content.Intent
@@ -12,32 +12,33 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.appointment.commerce.view.activities.menu.CommerceMenu
 import com.example.appointment.commerce.view.adapters.AppointmentAdapter
 import com.example.appointment.commerce.viewModel.FireBaseManager
 import com.example.appointment.common.model.Appointment
-import com.example.appointment.databinding.ActivityCommerceHomeBinding
+import com.example.appointment.databinding.ActivityUserHomeBinding
+import com.example.appointment.user.view.activities.menu.UserMenu
+import com.example.appointment.user.view.adapters.AppointmentUserAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.util.Calendar
 
-class CommerceHome : AppCompatActivity() {
-    private lateinit var binding: ActivityCommerceHomeBinding
+class UserHome : AppCompatActivity() {
+    private lateinit var binding: ActivityUserHomeBinding
     private lateinit var rvAppointments: RecyclerView
-    private lateinit var appointmentAdapter: AppointmentAdapter
+    private lateinit var appointmentUserAdapter: AppointmentUserAdapter
     private lateinit var profileImage: ImageView
     private lateinit var profileImageUri: Uri
     private var appointmentList = ArrayList<Appointment>()
     private val firestore = FirebaseFirestore.getInstance()
     private val firebaseManager: FireBaseManager = FireBaseManager()
-    val currentCommerce = FirebaseAuth.getInstance().currentUser
-    val commerceId = currentCommerce?.uid
+    private val currentUser = FirebaseAuth.getInstance().currentUser
+    private val userId = currentUser?.uid
     private var currentDate = getCurrentDate()
-    private var todaysDate = getToday()
+    private var todayDate = getToday()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityCommerceHomeBinding.inflate(layoutInflater)
+        binding = ActivityUserHomeBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -47,14 +48,14 @@ class CommerceHome : AppCompatActivity() {
         goToMenu()
         chooseProfileImage()
 
-        if (commerceId != null) {
-            getCurrentCommerceData(commerceId)
+        if (userId != null) {
+            getCurrentUserData(userId)
         }
 
     }
 
     private fun chooseProfileImage() {
-        profileImage = binding.ivCommerceImage
+        profileImage = binding.ivUserImage
         profileImage.setOnClickListener {
             openGalery()
         }
@@ -65,7 +66,7 @@ class CommerceHome : AppCompatActivity() {
      */
     private fun goToMenu() {
         binding.menuIcon.setOnClickListener {
-            val intent = Intent(this@CommerceHome, CommerceMenu::class.java)
+            val intent = Intent(this@UserHome, UserMenu::class.java)
             startActivity(intent)
         }
     }
@@ -77,9 +78,9 @@ class CommerceHome : AppCompatActivity() {
         rvAppointments = binding.rvAppointments
         rvAppointments.layoutManager = LinearLayoutManager(this)
 
-        if (commerceId != null) {
+        if (userId != null) {
             firestore.collection("appointments")
-                .whereEqualTo("commerce_id", commerceId)
+                .whereEqualTo("user_id", userId)
                 .get()
                 .addOnSuccessListener { querySnapshot ->
 
@@ -99,46 +100,52 @@ class CommerceHome : AppCompatActivity() {
                                 optionalRequest = doc.data["optional_request"].toString()
                             )
 
-                            firebaseManager.getServiceNameById(appointment.serviceId) { serviceName ->
-                                appointment.serviceId = serviceName
-                                firebaseManager.getUserNameByUid(appointment.userId) { userName ->
-                                    appointment.userId = userName
+
+                            firebaseManager.getCommerceNameByUid(appointment.commerceId) { commerceName ->
+                                appointment.commerceName = commerceName
+                                firebaseManager.getServiceNameByIds(
+                                    appointment.serviceId,
+                                    appointment.commerceId
+                                ) { serviceName ->
+                                    appointment.serviceId = serviceName!!
                                     appointmentList.add(appointment)
-                                    appointmentList.sortBy { it.appointmentTime } // Ordenamos la lista por hora
+                                    appointmentList.sortBy { it.appointmentTime }
                                     updateRecyclerView()
                                     Log.d(
-                                        "CommerceHome1",
+                                        "UserHome1",
                                         "Appointment List Size: ${appointmentList.size}"
                                     )
                                     if (appointmentList.size > 0) {
                                         binding.txtNoAppointments.visibility = View.GONE
                                     } else {
                                         binding.txtNoAppointments.visibility = View.VISIBLE
+
                                     }
                                 }
                             }
                         }
                     }
 
-                    Log.d("CommerceHome3", "Appointment List Size: ${appointmentList.size}")
+                    Log.d("UserHome3", "Appointment List Size: ${appointmentList.size}")
 
-                    if (currentDate == todaysDate) {
+                    if (currentDate == todayDate) {
                         binding.txtAppointments.text = "Hoy"
                     } else {
                         binding.txtAppointments.text = selectedDate
                     }
                 }
         } else {
+
         }
     }
 
     private fun updateRecyclerView() {
-        if (!::appointmentAdapter.isInitialized) {
-            appointmentAdapter = AppointmentAdapter(appointmentList)
-            rvAppointments.adapter = appointmentAdapter
+        if (!::appointmentUserAdapter.isInitialized) {
+            appointmentUserAdapter = AppointmentUserAdapter(appointmentList)
+            rvAppointments.adapter = appointmentUserAdapter
         } else {
-            appointmentAdapter.notifyDataSetChanged()
-            Log.d("CommerceHome", "Adapter notifyDataSetChanged called")
+            appointmentUserAdapter.notifyDataSetChanged()
+            Log.d("UserHome", "Adapter notifyDataSetChanged called")
         }
     }
 
@@ -159,7 +166,7 @@ class CommerceHome : AppCompatActivity() {
     }
 
     private fun handleDateChange(daysToAdd: Int) {
-        Log.d("CommerceHome", "Current Date: $currentDate")
+        Log.d("UserHome", "Current Date: $currentDate")
         val calendar = Calendar.getInstance()
         val dateParts = currentDate.split("-")
         calendar.set(dateParts[2].toInt(), dateParts[1].toInt() - 1, dateParts[0].toInt())
@@ -169,7 +176,7 @@ class CommerceHome : AppCompatActivity() {
             calendar.get(Calendar.YEAR)
         }"
         currentDate = newDate
-        Log.d("CommerceHome", "New Date: $newDate")
+        Log.d("UserHome", "New Date: $newDate")
         fillRecyclerView(newDate)
     }
 
@@ -192,20 +199,20 @@ class CommerceHome : AppCompatActivity() {
         return appointmentDate == currentDate
     }
 
-    private fun getCurrentCommerceData(commerceId: String) {
-        val commerceRef = firestore.collection("commerces").document(commerceId)
-        commerceRef.get()
+    private fun getCurrentUserData(userId: String) {
+        val userRef = firestore.collection("users").document(userId)
+        userRef.get()
             .addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
-                    val commerceName = documentSnapshot.getString("commerce_name")
-                    val commerceEmail = documentSnapshot.getString("commerce_email")
-                    val commerceImageUrl = documentSnapshot.getString("commerce_picture")
+                    val userName = documentSnapshot.getString("user_name")
+                    val userEmail = documentSnapshot.getString("user_email")
+                    val userImageUrl = documentSnapshot.getString("user_picture")
 
-                    binding.txtCommerceName.text = commerceName.toString()
-                    binding.txtCommerceEmail.text = commerceEmail.toString()
+                    binding.txtUserName.text = userName.toString()
+                    binding.txtUserEmail.text = userEmail.toString()
 
-                    if (!commerceImageUrl.isNullOrEmpty()) {
-                        loadCommerceImage(commerceImageUrl)
+                    if (!userImageUrl.isNullOrEmpty()) {
+                        loadUserImage(userImageUrl)
                     }
 
                 } else {
@@ -217,8 +224,8 @@ class CommerceHome : AppCompatActivity() {
             }
     }
 
-    private fun loadCommerceImage(imageUrl: String) {
-        // Cargar la imagen usando Glide
+    // Cargar la imagen usando Glide
+    private fun loadUserImage(imageUrl: String) {
         Glide.with(this)
             .load(imageUrl)
             .into(profileImage)
@@ -244,17 +251,17 @@ class CommerceHome : AppCompatActivity() {
     }
 
     private fun uploadProfileImage(imageUri: Uri) {
-        val commerceId = currentCommerce?.uid
-        if (commerceId != null) {
+        val userId = currentUser?.uid
+        if (userId != null) {
             val storageReference =
-                FirebaseStorage.getInstance().reference.child("commerces/$commerceId/commerce_picture/profileImage.jpg")
+                FirebaseStorage.getInstance().reference.child("user/$userId/user_picture/profileImage.jpg")
 
             storageReference.putFile(imageUri)
                 .addOnSuccessListener { taskSnapshot ->
                     // Obtener la URL de descarga de la imagen
                     storageReference.downloadUrl.addOnSuccessListener { uri ->
                         // Guardar la URL de la imagen en Firestore
-                        saveImageUriToFirestore(uri.toString(), commerceId)
+                        saveImageUriToFirestore(uri.toString(), userId)
                     }
                 }
                 .addOnFailureListener { exception ->
@@ -264,12 +271,12 @@ class CommerceHome : AppCompatActivity() {
         }
     }
 
-    private fun saveImageUriToFirestore(imageUri: String, commerceId: String) {
+    private fun saveImageUriToFirestore(imageUri: String, userId: String) {
         val firestore = FirebaseFirestore.getInstance()
-        val commerceRef = firestore.collection("commerces").document(commerceId)
+        val userRef = firestore.collection("users").document(userId)
 
         // Actualizar el campo 'picture' en el documento de comercio con la URL de la imagen
-        commerceRef.update("commerce_picture", imageUri)
+        userRef.update("user_picture", imageUri)
             .addOnSuccessListener {
                 Log.d("URLImage", "La imagen se ha actualizado correctamente")
             }

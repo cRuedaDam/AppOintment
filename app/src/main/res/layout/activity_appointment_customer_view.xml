@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".commerce.view.activities.appointments.AppointmentCommerceView">
+    tools:context=".user.view.activities.appointments.AppointmentCustomerView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ly_top_menu"
@@ -19,8 +19,8 @@
             android:id="@+id/back_arrow_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:padding="7dp"
             android:src="@drawable/icon_back_arrow"
@@ -31,15 +31,15 @@
         <TextView
             android:id="@+id/txt_appointments"
             style="@style/TextViewTitleStyle"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/appointments"/>
+            android:text="@string/appointments"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,21 +55,21 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/txt_customer_name"
-                android:textSize="20sp"
+                android:id="@+id/txt_commerce_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="@string/customer_appoitnment" />
+                android:text="@string/commerce_name"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -78,39 +78,39 @@
         android:id="@+id/ly_appointment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         android:padding="40dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ly_info_commerce">
 
         <ImageView
             android:id="@+id/img_service_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_specialities"
             android:paddingStart="3dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/icon_specialities"
+            app:layout_constraintBottom_toTopOf="@id/img_calendar"
             app:layout_constraintEnd_toStartOf="@id/txt_service_type"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/img_calendar" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_service_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            app:layout_constraintStart_toEndOf="@id/img_service_type"
-            app:layout_constraintTop_toTopOf="@id/img_service_type"
+            android:text="@string/hair_dresser"
             app:layout_constraintBottom_toBottomOf="@id/img_service_type"
-            android:text="@string/hair_dresser"/>
+            app:layout_constraintStart_toEndOf="@id/img_service_type"
+            app:layout_constraintTop_toTopOf="@id/img_service_type" />
 
         <ImageView
             android:id="@+id/img_calendar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:src="@drawable/icon_calendar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_service_type"
-            android:layout_marginTop="20dp"/>
+            app:layout_constraintTop_toBottomOf="@id/img_service_type" />
 
         <TextView
             android:id="@+id/txt_appointment_date"
@@ -118,9 +118,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="3dp"
+            android:text="@string/date_example"
             app:layout_constraintStart_toEndOf="@id/img_calendar"
-            app:layout_constraintTop_toTopOf="@id/img_calendar"
-            android:text="@string/date_example"/>
+            app:layout_constraintTop_toTopOf="@id/img_calendar" />
 
         <TextView
             android:id="@+id/txt_appointment_time"
@@ -128,65 +128,57 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginBottom="3dp"
-            app:layout_constraintStart_toEndOf="@id/img_calendar"
+            android:text="@string/time_example"
             app:layout_constraintBottom_toBottomOf="@id/img_calendar"
-            android:text="@string/time_example"/>
+            app:layout_constraintStart_toEndOf="@id/img_calendar" />
 
         <TextView
             android:id="@+id/txt_contact_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:text="@string/contact_info"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_calendar"
-            android:text="@string/contact_info"/>
+            app:layout_constraintTop_toBottomOf="@id/img_calendar" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ly_contact_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_contact_info"
             android:layout_marginTop="20dp"
             android:background="@drawable/border_radius_appointments"
-            android:padding="10dp">
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_contact_info">
 
             <TextView
-                android:id="@+id/txt_customer_full_name"
+                android:id="@+id/txt_commerce_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginStart="15dp"
-                android:text="@string/name"/>
+                android:text="@string/address_commerce"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/txt_customer_last_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/txt_customer_full_name"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="5dp"
-                android:text="@string/last_name"/>
 
             <TextView
                 android:id="@+id/txt_customer_email_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_customer_full_name"
                 android:layout_marginStart="15dp"
-                android:text="@string/ejm_email"/>
+                android:text="@string/ejm_email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_commerce_address" />
 
             <TextView
                 android:id="@+id/txt_customer_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_customer_email_info"
                 android:layout_marginStart="15dp"
-                android:text="@string/phone_number"/>
+                android:text="@string/phone_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_customer_email_info" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -194,11 +186,11 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_delete_appointment"
         style="@style/MainButtonStyle"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/red_cancel_button"
         android:text="@string/cancel_appoint"
-        app:layout_constraintTop_toBottomOf="@id/ly_appointment"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ly_appointment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

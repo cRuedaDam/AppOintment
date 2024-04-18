@@ -15,7 +15,7 @@
         android:textAlignment="center"
         android:layout_margin="20dp"
         android:textStyle="bold"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ly_appointments"
@@ -24,7 +24,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
+        android:padding="10dp"
         android:background="@drawable/border_radius_appointments"
+        android:backgroundTint="@color/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_no_appointments_today">

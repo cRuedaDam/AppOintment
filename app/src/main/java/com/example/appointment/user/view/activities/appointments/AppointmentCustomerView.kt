@@ -1,4 +1,4 @@
-package com.example.appointment.commerce.view.activities.appointments
+package com.example.appointment.user.view.activities.appointments
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,16 +11,18 @@ import com.example.appointment.commerce.view.activities.home.CommerceHome
 import com.example.appointment.commerce.view.fragments.CustomAlertDialog
 import com.example.appointment.commerce.viewModel.FireBaseManager
 import com.example.appointment.databinding.ActivityAppointmentCommerceViewBinding
+import com.example.appointment.databinding.ActivityAppointmentCustomerViewBinding
+import com.example.appointment.user.view.activities.home.UserHome
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AppointmentCommerceView : AppCompatActivity() {
-    private lateinit var binding: ActivityAppointmentCommerceViewBinding
+class AppointmentCustomerView : AppCompatActivity() {
+
+    private lateinit var binding: ActivityAppointmentCustomerViewBinding
     private lateinit var deleteAppointment: Button
     private val fireBaseManager = FireBaseManager()
     private val firestore = FirebaseFirestore.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityAppointmentCommerceViewBinding.inflate(layoutInflater)
+        binding = ActivityAppointmentCustomerViewBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         goBackHome()
@@ -33,7 +35,7 @@ class AppointmentCommerceView : AppCompatActivity() {
      */
     private fun goBackHome() {
         binding.backArrowIcon.setOnClickListener {
-            var intent: Intent = Intent(this@AppointmentCommerceView, CommerceHome::class.java)
+            var intent: Intent = Intent(this@AppointmentCustomerView, UserHome::class.java)
             startActivity(intent)
         }
     }
@@ -44,23 +46,23 @@ class AppointmentCommerceView : AppCompatActivity() {
         deleteAppointment.setOnClickListener {
 
             CustomAlertDialog.showAlertDialog(
-                this@AppointmentCommerceView,
+                this@AppointmentCustomerView,
                 "¿Estás seguro de que quieres eliminar esta cita?",
                 onAccept = {
                     try {
                         val appointmentId = intent.getStringExtra("appointmentId").toString()
                         fireBaseManager.deleteAppointment(appointmentId)
                         Toast.makeText(
-                            this@AppointmentCommerceView,
+                            this@AppointmentCustomerView,
                             "La cita ha sido eliminada de calendario.",
                             Toast.LENGTH_SHORT
                         ).show()
                         val intent =
-                            Intent(this@AppointmentCommerceView, CommerceHome::class.java)
+                            Intent(this@AppointmentCustomerView, CommerceHome::class.java)
                         startActivity(intent)
                     } catch (e: Exception) {
                         Toast.makeText(
-                            this@AppointmentCommerceView,
+                            this@AppointmentCustomerView,
                             "Ha habido un problema al intentar eliminar al empleado de la Base de datos.",
                             Toast.LENGTH_SHORT
                         ).show()
@@ -74,38 +76,51 @@ class AppointmentCommerceView : AppCompatActivity() {
     }
 
     private fun fillAppointmentData() {
-        val userName = intent.getStringExtra("userName")
-        val userId = intent.getStringExtra("userId")
+        val commerceName = intent.getStringExtra("commerceName")
+        val commerceId = intent.getStringExtra("commerceId")
         val date = intent.getStringExtra("appointmentDate")
         val time = intent.getStringExtra("appointmentTime")
         val service = intent.getStringExtra("serviceId")
+        val address = intent.getStringExtra("commerceAddress")
 
         //binding.txtCustomerName.text = userName.toString()
         binding.txtAppointmentDate.text = date.toString()
         binding.txtAppointmentTime.text = time.toString()
         binding.txtServiceType.text = service.toString()
-        binding.txtCustomerFullName.text = userName.toString()
+        binding.txtCommerceAddress.text = address.toString()
+        binding.txtCommerceName.text = commerceName.toString()
 
-        if (userId != null) {
-            firestore.collection("users")
-                .document(userId)
+        if (commerceId != null) {
+            firestore.collection("commerces")
+                .document(commerceId)
                 .get()
                 .addOnSuccessListener { documentSnapshot ->
                     if (documentSnapshot.exists()) {
-                        val userEmail = documentSnapshot.getString("user_email")
-                        val userPhone = documentSnapshot.getString("user_phone_number")
-                        val userLastName = documentSnapshot.getString("user_last_name")
-                        binding.txtCustomerEmailInfo.text = userEmail.toString()
-                        binding.txtCustomerPhoneNumber.text = userPhone.toString()
-                        binding.txtCustomerLastName.text = userLastName.toString()
+                        val commerceEmail = documentSnapshot.getString("commerce_email")
+                        val commercePhone = documentSnapshot.getString("commerce_phone_number")
+
+                        // Acceder al subdocumento "address"
+                        val address = documentSnapshot.get("address") as? Map<String, Any>
+                        val commerceStreetName = address?.get("commerce_street_name") as? String
+                        val commerceTypeStreet = address?.get("commerce_street_type") as? String
+                        val commerceVillage = address?.get("commerce_city") as? String
+                        val commerceCity = address?.get("commerce_state") as? String
+                        val commerceStreetNumber = address?.get("commerce_street_number") as? String
+                        val commercePostalCode = address?.get("commerce_postal_code") as? String
+
+
+                        binding.txtCustomerEmailInfo.text = commerceEmail.toString()
+                        binding.txtCustomerPhoneNumber.text = commercePhone.toString()
+                        val addressText = "${commerceTypeStreet ?: ""} ${commerceStreetName ?: ""}, ${commerceStreetNumber ?: ""}, ${commercePostalCode ?: ""} ${commerceVillage ?: ""} (${commerceCity ?: ""})"
+                        binding.txtCommerceAddress.text = addressText.trim()
                     } else {
                         // El documento no existe
-                        Log.d("TAG", "No existe el documento con ID: $userId")
+                        Log.d("TAG", "No existe el documento con ID: $commerceId")
                     }
                 }
                 .addOnFailureListener { e ->
                     // Manejar errores
-                    Log.e("TAG", "Error al obtener el documento con ID: $userId", e)
+                    Log.e("TAG", "Error al obtener el documento con ID: $commerceId", e)
                 }
         }
     }

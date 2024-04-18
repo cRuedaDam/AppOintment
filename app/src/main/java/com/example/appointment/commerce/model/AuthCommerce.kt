@@ -1,8 +1,8 @@
-package com.example.reservapp.commerce.model
+package com.example.appointment.commerce.model
 
 import java.io.Serializable
 
-class AuthCommerce(
+data class AuthCommerce(
     val commerceId: String,
     val commerceName: String,
     val commerceEmail: String,
@@ -14,5 +14,4 @@ class AuthCommerce(
     val commerceCity: String,
     val commerceState: String,
     val commercePostalCode: String
-) : Serializable {
-}
+) : Serializable

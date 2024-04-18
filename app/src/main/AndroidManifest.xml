@@ -13,29 +13,41 @@
         android:theme="@style/Theme.AppOintment"
         tools:targetApi="31">
         <activity
+            android:name=".user.view.activities.menu.UserMenu"
+            android:exported="false" />
+        <activity
+            android:name=".user.view.activities.home.UserHome"
+            android:exported="false" />
+        <activity
+            android:name=".user.view.activities.appointments.AppointmentCustomerView"
+            android:exported="false" />
+        <activity
+            android:name=".user.view.activities.AppointmentCustomerView"
+            android:exported="false" />
+        <activity
             android:name=".commerce.view.activities.menu.employees.CommerceEditEmlpoyee"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commerce.view.activities.menu.employees.CommerceAddEmployee"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commerce.view.activities.menu.specialities.CommerceAddSpeciality"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commerce.view.activities.menu.specialities.CommerceEditSpeciality"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commerce.view.activities.menu.specialities.CommerceSpecialities"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commerce.view.activities.menu.employees.CommerceEmployees"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commerce.view.activities.menu.editProfile.ChangeCommercePassword"
             android:exported="false"
