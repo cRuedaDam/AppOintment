@@ -25,6 +25,7 @@ class AppointmentCustomerView : AppCompatActivity() {
         binding = ActivityAppointmentCustomerViewBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         goBackHome()
         fillAppointmentData()
         deleteAppointment()

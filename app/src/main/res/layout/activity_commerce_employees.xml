@@ -79,28 +79,35 @@
     <ScrollView
         android:id="@+id/sv_employees"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_separator"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="40dp">
+        app:layout_constraintBottom_toTopOf="@id/guideline2">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_employees"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add_employee"
         style="@style/MainButtonStyle"
-        android:layout_marginBottom="50dp"
         android:text="Añadir empleado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_employees" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

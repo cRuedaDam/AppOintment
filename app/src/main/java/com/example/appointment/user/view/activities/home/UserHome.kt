@@ -17,6 +17,7 @@ import com.example.appointment.commerce.view.adapters.AppointmentAdapter
 import com.example.appointment.commerce.viewModel.FireBaseManager
 import com.example.appointment.common.model.Appointment
 import com.example.appointment.databinding.ActivityUserHomeBinding
+import com.example.appointment.user.view.activities.appointments.AppointmentCategory
 import com.example.appointment.user.view.activities.menu.UserMenu
 import com.example.appointment.user.view.adapters.AppointmentUserAdapter
 import com.google.firebase.auth.FirebaseAuth
@@ -49,6 +50,7 @@ class UserHome : AppCompatActivity() {
         appointmentsNextDay()
         goToMenu()
         chooseProfileImage()
+        makeAnAppointment()
 
         if (userId != null) {
             getCurrentUserData(userId)
@@ -110,7 +112,7 @@ class UserHome : AppCompatActivity() {
                                     appointment.serviceId,
                                     appointment.commerceId
                                 ) { serviceName ->
-                                    appointment.serviceId = serviceName!!
+                                    appointment.serviceId = if (serviceName.isNullOrEmpty()) "Servicio no disponible" else serviceName //Si el servicio ha sido eliminado se trata la excepcion
                                     appointmentList.add(appointment)
                                     appointmentList.sortBy { it.appointmentTime }
                                     updateRecyclerView()
@@ -296,6 +298,13 @@ class UserHome : AppCompatActivity() {
                 // Manejar la actualización no exitosa
                 Log.d("URLImage", "La imagen No se ha actualizado correctamente")
             }
+    }
+
+    private fun makeAnAppointment(){
+        binding.btnMakeAppointment.setOnClickListener {
+            val intent = Intent(this@UserHome, AppointmentCategory::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {

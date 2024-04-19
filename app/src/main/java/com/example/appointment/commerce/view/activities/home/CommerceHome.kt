@@ -101,7 +101,7 @@ class CommerceHome : AppCompatActivity() {
                             )
 
                             firebaseManager.getServiceNameById(appointment.serviceId) { serviceName ->
-                                appointment.serviceId = serviceName
+                                appointment.serviceId =  if (serviceName.isNullOrEmpty()) "Servicio no disponible" else serviceName
                                 firebaseManager.getUserNameByUid(appointment.userId) { userName ->
                                     appointment.userId = userName
                                     appointmentList.add(appointment)
