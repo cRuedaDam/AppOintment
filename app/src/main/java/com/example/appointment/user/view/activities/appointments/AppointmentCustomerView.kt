@@ -111,7 +111,8 @@ class AppointmentCustomerView : AppCompatActivity() {
 
                         binding.txtCustomerEmailInfo.text = commerceEmail.toString()
                         binding.txtCustomerPhoneNumber.text = commercePhone.toString()
-                        val addressText = "${commerceTypeStreet ?: ""} ${commerceStreetName ?: ""}, ${commerceStreetNumber ?: ""}, ${commercePostalCode ?: ""} ${commerceVillage ?: ""} (${commerceCity ?: ""})"
+                        val addressText =
+                            "${commerceTypeStreet ?: ""} ${commerceStreetName ?: ""}, ${commerceStreetNumber ?: ""}, ${commercePostalCode ?: ""} ${commerceVillage ?: ""} (${commerceCity ?: ""})"
                         binding.txtCommerceAddress.text = addressText.trim()
                     } else {
                         // El documento no existe

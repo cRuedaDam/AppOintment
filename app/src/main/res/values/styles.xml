@@ -3,6 +3,7 @@
 
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Dialog.Alert">
         <item name="colorAccent">@color/buttons</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="EditTextStyle" parent="Widget.AppCompat.EditText">

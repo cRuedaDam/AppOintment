@@ -159,6 +159,42 @@ class FireBaseManager {
             }
     }
 
+    fun changeUserName(userId: String, newUserName: String){
+        val userRef = firestore.collection("users").document(userId)
+        userRef.update("user_name", newUserName)
+            .addOnSuccessListener {
+                Log.d("FirebaseMsg", "El nombre del usuario se ha cambiado en la Base de datos.")
+            }
+            .addOnFailureListener { e ->
+                Log.e("FirestoreError", "Error cambiando el nombre del usuario")
+            }
+    }
+
+    fun changeUserLastName(userId: String, newUserLastName: String){
+        val userRef = firestore.collection("users").document(userId)
+        userRef.update("user_last_name", newUserLastName)
+            .addOnSuccessListener {
+                Log.d("FirebaseMsg", "El apellido del usuario se ha cambiado en la Base de datos.")
+            }
+            .addOnFailureListener { e ->
+                Log.e("FirestoreError", "Error cambiando el apellido del usuario")
+            }
+    }
+
+
+
+
+    fun deleteUser(userId: String){
+        val userRef = firestore.collection("users").document(userId)
+        userRef.delete()
+            .addOnSuccessListener {
+                Log.d("FirebaseMsg", "El usuario ha sido eliminado de la Base de datos.")
+            }
+            .addOnFailureListener {
+                Log.d("FirebaseMsg", "Error al eliminar el comercio.")
+            }
+    }
+
     //Commerces
     fun getCommerceNameByUid(commerceId: String, onComplete: (String) -> Unit) {
         firestore.collection("commerces")

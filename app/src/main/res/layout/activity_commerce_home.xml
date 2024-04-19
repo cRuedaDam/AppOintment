@@ -45,20 +45,20 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:scaleType="centerCrop"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp"
             android:padding="3dp"
-            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@id/iv_commerce_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_commerce_image"
@@ -97,9 +97,9 @@
             android:id="@+id/ly_appointments_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:textSize="20sp"
-            android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -146,10 +146,10 @@
             android:layout_marginTop="20dp"
             android:text="@string/no_appointments"
             android:textAlignment="center"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ly_appointments_date"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@id/ly_appointments_date" />
 
         <ScrollView
             android:id="@+id/scroll_appointments"
@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="30dp"/>
+                android:layout_marginBottom="30dp" />
 
         </ScrollView>
 
@@ -190,6 +190,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="622dp" />
+        app:layout_constraintGuide_percent="0.8508892" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

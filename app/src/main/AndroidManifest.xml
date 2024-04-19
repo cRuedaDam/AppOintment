@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <application
         android:allowBackup="true"
@@ -11,19 +11,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppOintment"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+        <activity
+            android:name=".user.view.activities.menu.editProfile.ChangeUserPassword"
+            android:exported="false" />
+        <activity
+            android:name=".user.view.activities.menu.editProfile.ChangeUserPhone"
+            android:exported="false" />
+        <activity
+            android:name=".user.view.activities.menu.editProfile.ChangeUserEmail"
+            android:exported="false" />
+        <activity
+            android:name=".user.view.activities.menu.editProfile.ChangeUserName"
+            android:exported="false" />
+        <activity
+            android:name=".user.view.activities.menu.editProfile.UserEditProfile"
+            android:exported="false" />
         <activity
             android:name=".user.view.activities.menu.UserMenu"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".user.view.activities.home.UserHome"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".user.view.activities.appointments.AppointmentCustomerView"
-            android:exported="false" />
-        <activity
-            android:name=".user.view.activities.AppointmentCustomerView"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".commerce.view.activities.menu.employees.CommerceEditEmlpoyee"
             android:exported="false"
@@ -103,7 +118,7 @@
         <activity
             android:name=".common.view.SplashScreen"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

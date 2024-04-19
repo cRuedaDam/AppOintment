@@ -9,6 +9,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -35,12 +36,12 @@ class CommerceHome : AppCompatActivity() {
     val commerceId = currentCommerce?.uid
     private var currentDate = getCurrentDate()
     private var todaysDate = getToday()
+    private lateinit var txtNoAppointments: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCommerceHomeBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         fillRecyclerView(currentDate)
         appointmentsPreviousDay()
         appointmentsNextDay()
@@ -50,7 +51,6 @@ class CommerceHome : AppCompatActivity() {
         if (commerceId != null) {
             getCurrentCommerceData(commerceId)
         }
-
     }
 
     private fun chooseProfileImage() {
@@ -74,6 +74,7 @@ class CommerceHome : AppCompatActivity() {
      * Esta función rellena el recyclerView con los datos recogidos desde la BBDD
      */
     private fun fillRecyclerView(selectedDate: String) {
+        appointmentList.clear()
         rvAppointments = binding.rvAppointments
         rvAppointments.layoutManager = LinearLayoutManager(this)
 
@@ -104,16 +105,18 @@ class CommerceHome : AppCompatActivity() {
                                 firebaseManager.getUserNameByUid(appointment.userId) { userName ->
                                     appointment.userId = userName
                                     appointmentList.add(appointment)
+
                                     appointmentList.sortBy { it.appointmentTime } // Ordenamos la lista por hora
+
                                     updateRecyclerView()
                                     Log.d(
                                         "CommerceHome1",
                                         "Appointment List Size: ${appointmentList.size}"
                                     )
-                                    if (appointmentList.size > 0) {
-                                        binding.txtNoAppointments.visibility = View.GONE
+                                    if (appointmentList.size == 0) {
+                                        txtNoAppointments.visibility = View.VISIBLE
                                     } else {
-                                        binding.txtNoAppointments.visibility = View.VISIBLE
+                                        txtNoAppointments.visibility = View.GONE
                                     }
                                 }
                             }
@@ -128,8 +131,10 @@ class CommerceHome : AppCompatActivity() {
                         binding.txtAppointments.text = selectedDate
                     }
                 }
+
         } else {
         }
+        handleNoAppointmentsVisibility()
     }
 
     private fun updateRecyclerView() {
@@ -139,6 +144,16 @@ class CommerceHome : AppCompatActivity() {
         } else {
             appointmentAdapter.notifyDataSetChanged()
             Log.d("CommerceHome", "Adapter notifyDataSetChanged called")
+        }
+    }
+
+    private fun handleNoAppointmentsVisibility() {
+        txtNoAppointments = binding.txtNoAppointments
+
+        if (appointmentList.isEmpty()) {
+            txtNoAppointments.visibility = View.VISIBLE
+        } else {
+            txtNoAppointments.visibility = View.GONE
         }
     }
 
@@ -176,14 +191,12 @@ class CommerceHome : AppCompatActivity() {
     private fun appointmentsNextDay() {
         binding.ivNextDay.setOnClickListener {
             handleDateChange(1)
-            appointmentList.clear()
         }
     }
 
     private fun appointmentsPreviousDay() {
         binding.ivPreviousDay.setOnClickListener {
             handleDateChange(-1)
-            appointmentList.clear()
         }
     }
 

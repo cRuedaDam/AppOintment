@@ -126,7 +126,6 @@ class Login : AppCompatActivity() {
      * Comprobamos si el Uid del usuario se encuentra en la BBDD
      */
     private fun checkUserType() {
-        alerts.showLoading(this@Login, "Espere por favor...")
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         if (userId != null) {
@@ -149,7 +148,6 @@ class Login : AppCompatActivity() {
                         // Usuario regular, redirigir a la pantalla principal de usuarios
                         launch(Dispatchers.Main) {
                             goCustomerHome(customer)
-                            alerts.hideLoading()
                         }
                     } else {
                         // No es un usuario regular, verificar en la colección de comercios
@@ -157,7 +155,6 @@ class Login : AppCompatActivity() {
                     }
                 } catch (e: Exception) {
                     launch(Dispatchers.Main) {
-                        alerts.hideLoading()
                         alerts.showAlert(
                             this@Login,
                             getString(R.string.error_msg),
@@ -202,11 +199,9 @@ class Login : AppCompatActivity() {
                         // El usuario es un comercio, redirigir a la pantalla principal de comercio
                         launch(Dispatchers.Main) {
                             goCommerceHome(commerce)
-                            alerts.hideLoading()
                         }
                     }else{
                         launch(Dispatchers.Main) {
-                            alerts.hideLoading()
                             alerts.showAlert(
                                 this@Login,
                                 getString(R.string.error_msg),
@@ -216,7 +211,6 @@ class Login : AppCompatActivity() {
                     }
                 } catch (e: Exception) {
                     launch(Dispatchers.Main) {
-                        alerts.hideLoading()
                         alerts.showAlert(
                             this@Login,
                             getString(R.string.error_msg),

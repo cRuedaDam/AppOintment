@@ -24,99 +24,100 @@ class AppointmentUserAdapter(private val appointments: List<Appointment>) :
         val txtCustomerService: TextView = itemView.findViewById(R.id.txt_customer_service)
         val txtDate: TextView = itemView.findViewById(R.id.txt_date)
         val txtTime: TextView = itemView.findViewById(R.id.txt_time)
-        val txtNoAppointments: TextView = itemView.findViewById(R.id.txt_no_appointments_today)
         val lyAppointments: ConstraintLayout = itemView.findViewById(R.id.ly_appointments)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppointmentUserViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.adapter_customer_appointment, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.adapter_customer_appointment, parent, false)
         return AppointmentUserViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
-        return if (appointments.isEmpty()) 1 else appointments.size
+        return if (appointments.isEmpty()) 0 else appointments.size
     }
 
     override fun onBindViewHolder(holder: AppointmentUserViewHolder, position: Int) {
 
-        if (appointments.isEmpty()) {
-            holder.txtNoAppointments.visibility = View.VISIBLE
-            holder.lyAppointments.visibility = View.GONE
+        val currentAppointment = appointments[position]
 
-        } else {
-            holder.txtNoAppointments.visibility = View.GONE
-            holder.lyAppointments.visibility = View.VISIBLE
+        Log.d("AdapterData", "Commerce Name: ${currentAppointment.commerceName}")
+        Log.d("AdapterData", "Service ID: ${currentAppointment.serviceId}")
+        Log.d("AdapterData", "User ID: ${currentAppointment.userId}")
 
-            val currentAppointment = appointments[position]
+        holder.txtCommerceName.text = currentAppointment.commerceName
+        holder.txtCustomerService.text = currentAppointment.serviceId
+        holder.txtDate.text = currentAppointment.appointmentDate
+        holder.txtTime.text = currentAppointment.appointmentTime
 
-            Log.d("AdapterData", "Commerce Name: ${currentAppointment.commerceName}")
-            Log.d("AdapterData", "Service ID: ${currentAppointment.serviceId}")
-            Log.d("AdapterData", "User ID: ${currentAppointment.userId}")
+        // Esta acción provoca un Intent hacia una nueva activity con los datos de Item
+        holder.itemView.setOnClickListener {
 
-            holder.txtCommerceName.text = currentAppointment.commerceName
-            holder.txtCustomerService.text = currentAppointment.serviceId
-            holder.txtDate.text = currentAppointment.appointmentDate
-            holder.txtTime.text = currentAppointment.appointmentTime
+            var appointmentId: String = ""
 
-            // Esta acción provoca un Intent hacia una nueva activity con los datos de Item
-            holder.itemView.setOnClickListener {
+            db.collection("appointments")
+                .whereEqualTo("user_id", currentAppointment.userId)
+                .get()
+                .addOnSuccessListener {
+                    try {
+                        for (doc in it) {
+                            appointmentId = doc.id.toString()
+                            val context = holder.itemView.context
 
-                var appointmentId: String = ""
+                            db.collection("appointments")
+                                .document(appointmentId)
+                                .get()
+                                .addOnSuccessListener { documentSnapshot ->
+                                    var commerceId = ""
 
-                db.collection("appointments")
-                    .whereEqualTo("user_id", currentAppointment.userId)
-                    .get()
-                    .addOnSuccessListener {
-                        try {
-                            for (doc in it) {
-                                appointmentId = doc.id.toString()
-                                val context = holder.itemView.context
-
-                                db.collection("appointments")
-                                    .document(appointmentId)
-                                    .get()
-                                    .addOnSuccessListener { documentSnapshot ->
-                                        var commerceId = ""
-
-                                        if (documentSnapshot.exists()) {
-                                            commerceId =
-                                                documentSnapshot.getString("commerce_id").toString()
-                                            Log.d(
-                                                "TAG",
-                                                "Commerce ID for Appointment $appointmentId: $commerceId"
-                                            )
-
-                                            val currentAppointment = appointments[position]
-                                            val appointmentId = currentAppointment.appointmentId
-                                            val context = holder.itemView.context
-
-                                            val intent = Intent(context, AppointmentCustomerView::class.java)
-                                            intent.putExtra("commerceId", currentAppointment.commerceId)
-                                            intent.putExtra("appointmentId", appointmentId)
-                                            intent.putExtra("commerceName", currentAppointment.commerceName)
-                                            intent.putExtra("appointmentDate", currentAppointment.appointmentDate)
-                                            intent.putExtra("appointmentTime", currentAppointment.appointmentTime)
-                                            intent.putExtra("serviceId", currentAppointment.serviceId)
-                                            context.startActivity(intent)
-
-                                        } else {
-                                            Log.d("TAG", "No existe la cita con ID: $appointmentId")
-                                        }
-                                    }
-                                    .addOnFailureListener { e ->
-                                        Log.e(
+                                    if (documentSnapshot.exists()) {
+                                        commerceId =
+                                            documentSnapshot.getString("commerce_id").toString()
+                                        Log.d(
                                             "TAG",
-                                            "Error obteniendo la cita con ID: $appointmentId",
-                                            e
+                                            "Commerce ID for Appointment $appointmentId: $commerceId"
                                         )
+
+                                        val currentAppointment = appointments[position]
+                                        val appointmentId = currentAppointment.appointmentId
+                                        val context = holder.itemView.context
+
+                                        val intent =
+                                            Intent(context, AppointmentCustomerView::class.java)
+                                        intent.putExtra("commerceId", currentAppointment.commerceId)
+                                        intent.putExtra("appointmentId", appointmentId)
+                                        intent.putExtra(
+                                            "commerceName",
+                                            currentAppointment.commerceName
+                                        )
+                                        intent.putExtra(
+                                            "appointmentDate",
+                                            currentAppointment.appointmentDate
+                                        )
+                                        intent.putExtra(
+                                            "appointmentTime",
+                                            currentAppointment.appointmentTime
+                                        )
+                                        intent.putExtra("serviceId", currentAppointment.serviceId)
+                                        context.startActivity(intent)
+
+                                    } else {
+                                        Log.d("TAG", "No existe la cita con ID: $appointmentId")
                                     }
-                            }
-                        } catch (e: Exception) {
-                            e
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.e(
+                                        "TAG",
+                                        "Error obteniendo la cita con ID: $appointmentId",
+                                        e
+                                    )
+                                }
                         }
+                    } catch (e: Exception) {
+                        e
                     }
-            }
+                }
         }
     }
 }

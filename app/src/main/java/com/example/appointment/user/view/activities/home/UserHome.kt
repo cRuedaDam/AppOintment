@@ -9,6 +9,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -36,6 +37,7 @@ class UserHome : AppCompatActivity() {
     private val userId = currentUser?.uid
     private var currentDate = getCurrentDate()
     private var todayDate = getToday()
+    private lateinit var txtNoAppointments: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityUserHomeBinding.inflate(layoutInflater)
@@ -75,6 +77,7 @@ class UserHome : AppCompatActivity() {
      * Esta función rellena el recyclerView con los datos recogidos desde la BBDD
      */
     private fun fillRecyclerView(selectedDate: String) {
+        appointmentList.clear()
         rvAppointments = binding.rvAppointments
         rvAppointments.layoutManager = LinearLayoutManager(this)
 
@@ -137,6 +140,7 @@ class UserHome : AppCompatActivity() {
         } else {
 
         }
+        handleNoAppointmentsVisibility()
     }
 
     private fun updateRecyclerView() {
@@ -146,6 +150,16 @@ class UserHome : AppCompatActivity() {
         } else {
             appointmentUserAdapter.notifyDataSetChanged()
             Log.d("UserHome", "Adapter notifyDataSetChanged called")
+        }
+    }
+
+    private fun handleNoAppointmentsVisibility() {
+        txtNoAppointments = binding.txtNoAppointments
+
+        if (appointmentList.isEmpty()) {
+            txtNoAppointments.visibility = View.VISIBLE
+        } else {
+            txtNoAppointments.visibility = View.GONE
         }
     }
 
@@ -183,14 +197,12 @@ class UserHome : AppCompatActivity() {
     private fun appointmentsNextDay() {
         binding.ivNextDay.setOnClickListener {
             handleDateChange(1)
-            appointmentList.clear()
         }
     }
 
     private fun appointmentsPreviousDay() {
         binding.ivPreviousDay.setOnClickListener {
             handleDateChange(-1)
-            appointmentList.clear()
         }
     }
 
