@@ -3,7 +3,9 @@ package com.example.appointment.commerce.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import com.example.appointment.R
+import com.example.appointment.commerce.view.fragments.TimePickerDialogFragment
 import com.example.appointment.common.view.Login
 import com.example.appointment.databinding.ActivityCommerceSignUpBinding
 import com.example.reservapp.common.viewModel.Alerts
@@ -28,6 +30,8 @@ class CommerceSignUp : AppCompatActivity() {
     private lateinit var state: String
     private lateinit var postalCode: String
     private lateinit var commerceEmail: String
+    private lateinit var commerceClosingTime: Button
+    private lateinit var commerceOpeningTime: Button
     private lateinit var commercePassword: String
     private lateinit var commerceConfirmPassword: String
     private var db = FirebaseFirestore.getInstance()
@@ -36,9 +40,13 @@ class CommerceSignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        chooseCheckInTime()
+        chooseCheckOutTime()
+
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.btnSignUp.setOnClickListener() {
+
             commerceName = binding.edtName.text.toString()
             commercePhoneNumber = binding.edtPhoneNumber.text.toString()
             streetType = binding.edtStreetType.text.toString()
@@ -92,6 +100,26 @@ class CommerceSignUp : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    private fun showTimePicker(button: Button) {
+        val timePickerDialog = TimePickerDialogFragment()
+        timePickerDialog.buttonToUpdate = button
+        timePickerDialog.show(supportFragmentManager, "timePicker")
+    }
+
+    private fun chooseCheckInTime() {
+        commerceOpeningTime = binding.btnOpeningTime
+        commerceOpeningTime.setOnClickListener {
+            showTimePicker(commerceOpeningTime)
+        }
+    }
+
+    private fun chooseCheckOutTime() {
+        commerceClosingTime = binding.btnClosingTime
+        commerceClosingTime.setOnClickListener {
+            showTimePicker(commerceClosingTime)
+        }
+    }
+
 
     /**
      * Esta función hace un intent a la activity LogIn, recogiendo el email
@@ -123,6 +151,8 @@ class CommerceSignUp : AppCompatActivity() {
                                 "commerce_name" to commerceName,
                                 "commerce_phone_number" to commercePhoneNumber,
                                 "commerce_type" to spinnerCategory,
+                                "commerce_opening_time" to commerceOpeningTime.text.toString(),
+                                "commerce_closing_time" to commerceClosingTime.text.toString(),
                                 "commerce_email" to commerceEmail,
                                 "address" to hashMapOf(
                                     "commerce_street_type" to streetType,

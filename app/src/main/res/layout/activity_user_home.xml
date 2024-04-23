@@ -179,7 +179,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_make_appointment"
         style="@style/MainButtonStyle"
-        android:text="Pedir cita"
+        android:text="@string/make_an_appointment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

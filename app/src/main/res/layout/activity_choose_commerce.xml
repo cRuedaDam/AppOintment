@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".commerce.view.activities.menu.employees.CommerceEmployees">
+    tools:context=".user.view.activities.appointments.AppointmentChooseCommerce">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ly_top_menu"
@@ -16,43 +16,77 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/iv_back_arrow"
+            android:id="@+id/back_arrow_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
+            android:padding="7dp"
             android:src="@drawable/icon_back_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txt_employees"
+            android:id="@+id/txt_appointments"
             style="@style/TextViewTitleStyle"
-            android:textSize="20sp"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/make_an_appointment"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="Empleados"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ly_info_commerce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:foregroundGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ly_top_menu">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txt_choose_a_commerce"
+                style="@style/TextViewTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/choose_a_commerce"
+                android:textSize="20sp" />
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/et_search_employee"
         style="@style/EditTextStyle"
         android:layout_marginTop="30dp"
-        android:hint="Buscar empleado"
+        android:hint="@string/search_commerce"
         android:maxLines="1"
-        android:drawableLeft="@drawable/icon_search"
+        android:drawableStart="@drawable/icon_search"
         android:drawablePadding="10dp"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ly_top_menu"/>
+        app:layout_constraintTop_toBottomOf="@+id/ly_info_commerce"
+        android:focusable="auto"/>
 
     <View
         android:id="@+id/view_separator"
@@ -65,19 +99,19 @@
         android:background="#CCCCCC" />
 
     <TextView
-        android:id="@+id/txt_no_employees"
+        android:id="@+id/txt_no_commerces"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_separator"
         android:layout_marginTop="20dp"
-        android:text="Aún no has añadido ningún empleado"
+        android:text="@string/no_commerces_yet"
         android:textAlignment="center"
         android:visibility="gone"/>
 
     <ScrollView
-        android:id="@+id/sv_employees"
+        android:id="@+id/sv_commerces"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="40dp"
@@ -85,29 +119,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_separator"
-        app:layout_constraintBottom_toTopOf="@id/guideline2">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_employees"
+            android:id="@+id/rv_commerces"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </ScrollView>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_add_employee"
-        style="@style/MainButtonStyle"
-        android:text="@string/add_employee"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

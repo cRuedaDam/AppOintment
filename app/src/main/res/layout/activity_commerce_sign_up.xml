@@ -72,13 +72,41 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edt_phone_number" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_opening_time"
+                style="@style/TimePickerBtnStyle"
+                android:layout_marginTop="30dp"
+                android:hint="Hora de apertura"
+                android:inputType="number"
+                android:maxLines="1"
+                android:onClick="showTimePicker"
+                android:paddingLeft="40dp"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_categories" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_closing_time"
+                style="@style/TimePickerBtnStyle"
+                android:layout_marginTop="30dp"
+                android:hint="Hora de cierre"
+                android:inputType="number"
+                android:maxLines="1"
+                android:onClick="showTimePicker"
+                android:paddingLeft="40dp"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_opening_time" />
+
             <TextView
                 android:id="@+id/txt_address"
                 style="@style/TextViewStyle"
                 android:layout_marginTop="30dp"
                 android:text="@string/address_commerce"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinner_categories" />
+                app:layout_constraintTop_toBottomOf="@id/btn_closing_time" />
 
             <EditText
                 android:id="@+id/edt_street_type"

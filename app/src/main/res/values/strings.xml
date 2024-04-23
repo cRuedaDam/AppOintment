@@ -77,8 +77,9 @@
         <item>Estética</item>
         <item>Peluquería</item>
         <item>Peluquería canina</item>
-        <item>Salón de uñas</item>
+        <item>Nutrición</item>
         <item>Fisioterapia</item>
+        <item>Salud</item>
     </string-array>
 
     <string-array name="list_specialties">
@@ -248,5 +249,10 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="Categories">Categorías</string>
+    <string name="make_an_appointment">Pedir cita</string>
+    <string name="esthetics">Estética</string>
+    <string name="choose_a_commerce">Selecciona un establecimiento</string>
+    <string name="search_commerce">Buscar establecimiento</string>
+    <string name="no_commerces_yet">Aún no hay comercios para esta categoría</string>
 
 </resources>
