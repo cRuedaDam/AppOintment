@@ -13,35 +13,47 @@
         android:theme="@style/Theme.AppOintment"
         tools:targetApi="31">
         <activity
-            android:name=".user.view.activities.appointments.SelectAppointment"
+            android:name=".user.view.activities.appointments.SelectAppointmentEmployee"
             android:exported="false" />
+        <activity
+            android:name=".user.view.activities.appointments.SelectAppointmentSpeciality"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".user.view.activities.appointments.AppointmentChooseCommerce"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".user.view.activities.appointments.AppointmentCategory"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".user.view.activities.menu.editProfile.ChangeUserPassword"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".user.view.activities.menu.editProfile.ChangeUserPhone"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".user.view.activities.menu.editProfile.ChangeUserEmail"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".user.view.activities.menu.editProfile.ChangeUserName"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".user.view.activities.menu.editProfile.UserEditProfile"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".user.view.activities.menu.UserMenu"

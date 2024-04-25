@@ -159,6 +159,17 @@ class FireBaseManager {
             }
     }
 
+    fun changeUserEmail(userId: String, newUserEmail: String){
+        val userRef = firestore.collection("users").document(userId)
+        userRef.update("user_email", newUserEmail)
+            .addOnSuccessListener {
+                Log.d("FirebaseMsg", "El email se ha cambiado en la Base de datos.")
+            }
+            .addOnFailureListener { e ->
+                Log.e("FirestoreError", "Error cambiando el email.")
+            }
+    }
+
     fun changeUserName(userId: String, newUserName: String){
         val userRef = firestore.collection("users").document(userId)
         userRef.update("user_name", newUserName)
@@ -181,6 +192,16 @@ class FireBaseManager {
             }
     }
 
+    fun changeUserPhone(userId: String, newUserPhone: String) {
+        val userRef = firestore.collection("users").document(userId)
+        userRef.update("user_phone_number", newUserPhone)
+            .addOnSuccessListener {
+                Log.d("FirebaseMsg", "El teléfono se ha cambiado en la Base de datos.")
+            }
+            .addOnFailureListener { e ->
+                Log.e("FirestoreError", "Error cambiando el teléfono")
+            }
+    }
 
 
 
@@ -215,6 +236,25 @@ class FireBaseManager {
                 onComplete.invoke("") // Invoca la lambda con una cadena vacía en caso de error
             }
     }
+
+    fun getCommerceIdByName(commerceName: String, onComplete: (String) -> Unit) {
+        firestore.collection("commerces")
+            .whereEqualTo("commerce_name", commerceName)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val commerceId = document.id
+                    onComplete(commerceId)
+                    return@addOnSuccessListener
+                }
+                Log.d("ERROR:", "No existe el comercio: $commerceName")
+                onComplete("No existe el comercio: $commerceName")
+            }
+            .addOnFailureListener { exception ->
+                onComplete("No existe el comercio: $commerceName")
+            }
+    }
+
     fun changeCommerceName(commerceId: String, newCommerceName: String){
         val commerceRef = firestore.collection("commerces").document(commerceId)
         commerceRef.update("commerce_name", newCommerceName)

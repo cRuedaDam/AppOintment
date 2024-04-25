@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appointment.R
 import com.example.appointment.user.model.Commerce
-import com.example.appointment.user.view.activities.appointments.SelectAppointment
+import com.example.appointment.user.view.activities.appointments.SelectAppointmentSpeciality
 
 class CommerceAdapter(private val commerceList: MutableList<Commerce> = mutableListOf()) : RecyclerView.Adapter<CommerceAdapter.CommerceViewHolder>() {
 
@@ -47,7 +47,7 @@ class CommerceAdapter(private val commerceList: MutableList<Commerce> = mutableL
             holder.itemView.visibility = View.VISIBLE
 
             holder.itemView.setOnClickListener {
-                val intent = Intent(holder.itemView.context, SelectAppointment::class.java)
+                val intent = Intent(holder.itemView.context, SelectAppointmentSpeciality::class.java)
                 intent.putExtra("COMMERCE_NAME", commerce.commerce_name)
                 holder.itemView.context.startActivity(intent) // Iniciar la actividad con el Intent
             }

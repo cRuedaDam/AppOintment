@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.view.activities.appointments.AppointmentChooseCommerce">
+    tools:context=".user.view.activities.appointments.SelectAppointmentSpeciality">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ly_top_menu"
@@ -63,69 +63,56 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/txt_choose_a_commerce"
+                android:id="@+id/txt_choose_a_speciality"
                 style="@style/TextViewTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="@string/choose_a_commerce"
+                android:text="Selecciona una especialidad"
                 android:textSize="20sp" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
-        android:id="@+id/et_search_employee"
+        android:id="@+id/et_search_speciality"
         style="@style/EditTextStyle"
         android:layout_marginTop="30dp"
-        android:hint="@string/search_commerce"
-        android:maxLines="1"
         android:drawableStart="@drawable/icon_search"
         android:drawablePadding="10dp"
+        android:focusable="auto"
+        android:hint="@string/search_speciality"
+        android:maxLines="1"
         android:paddingStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ly_info_commerce"
-        android:focusable="auto"/>
+        app:layout_constraintTop_toBottomOf="@+id/ly_info_commerce" />
 
     <View
         android:id="@+id/view_separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_search_employee"
         android:layout_margin="20dp"
-        android:background="#CCCCCC" />
-
-    <TextView
-        android:id="@+id/txt_no_commerces"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="#CCCCCC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_separator"
-        android:layout_marginTop="20dp"
-        android:text="@string/no_commerces_yet"
-        android:textAlignment="center"
-        android:visibility="gone"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_search_speciality" />
 
     <ScrollView
-        android:id="@+id/sv_commerces"
+        android:id="@+id/sv_specialities"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="40dp"
         android:layout_margin="20dp"
+        android:layout_marginHorizontal="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_separator"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/view_separator">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_commerces"
+            android:id="@+id/rv_specialities"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

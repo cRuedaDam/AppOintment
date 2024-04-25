@@ -254,5 +254,6 @@
     <string name="choose_a_commerce">Selecciona un establecimiento</string>
     <string name="search_commerce">Buscar establecimiento</string>
     <string name="no_commerces_yet">Aún no hay comercios para esta categoría</string>
+    <string name="search_speciality">Buscar especialidad</string>
 
 </resources>

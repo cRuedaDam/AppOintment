@@ -1,16 +1,15 @@
 package com.example.appointment.commerce.view.activities.menu.specialities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appointment.R
 import com.example.appointment.commerce.model.Speciality
 import com.example.appointment.commerce.view.activities.menu.CommerceMenu
 import com.example.appointment.commerce.view.adapters.SpecialityAdapter
@@ -36,15 +35,17 @@ class CommerceSpecialities : AppCompatActivity(), SpecialityAdapter.OnSpeciality
         filteredSearch()
     }
 
-    private fun filteredSearch(){
+    private fun filteredSearch() {
 
-        specialityAdapter = SpecialityAdapter(specialitiesList) // Iguala el adaptador a la lista recibida desde el Employee Adapter
+        specialityAdapter =
+            SpecialityAdapter(specialitiesList) // Iguala el adaptador a la lista recibida desde el Employee Adapter
         specialityAdapter.setOnSpecialityFilterListener(this) // Se le agrega un listener al adaptador
         rvSpecialities.adapter = specialityAdapter // El Recycler View se iguala al adaptador
 
         edtSearch = binding.etSearchSpeciality
 
-        edtSearch.addTextChangedListener(object : TextWatcher { // Se le añade un TextListener al Buscador para realizar la acción de filtro cuando el texto cambie
+        edtSearch.addTextChangedListener(object :
+            TextWatcher { // Se le añade un TextListener al Buscador para realizar la acción de filtro cuando el texto cambie
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -72,7 +73,7 @@ class CommerceSpecialities : AppCompatActivity(), SpecialityAdapter.OnSpeciality
         }
     }
 
-    private fun fillSpecialitiesRecyclerView(){
+    private fun fillSpecialitiesRecyclerView() {
 
         rvSpecialities = binding.rvSpecialities
         rvSpecialities.layoutManager = LinearLayoutManager(this)
@@ -107,6 +108,7 @@ class CommerceSpecialities : AppCompatActivity(), SpecialityAdapter.OnSpeciality
 
         }
     }
+
     override fun onFilterTextChanged(text: String) {
         specialityAdapter.filter(text)
     }

@@ -2,17 +2,15 @@ package com.example.appointment.user.view.activities.appointments
 
 import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appointment.commerce.model.Employee
-import com.example.appointment.commerce.view.adapters.EmployeeAdapter
 import com.example.appointment.databinding.ActivityChooseCommerceBinding
 import com.example.appointment.user.model.Commerce
 import com.example.appointment.user.view.adapters.CommerceAdapter
