@@ -65,7 +65,7 @@ class SelectAppointmentSpeciality : AppCompatActivity(),
                             }
                         }
 
-                        specialitiesAdapter = SpecialitiesAdapter(specialitiesList, commerceName, commerceType)
+                        specialitiesAdapter = SpecialitiesAdapter(specialitiesList, commerceName, commerceType, commerceId)
                         rvSpecialities.adapter = specialitiesAdapter
                     }
                 } else {

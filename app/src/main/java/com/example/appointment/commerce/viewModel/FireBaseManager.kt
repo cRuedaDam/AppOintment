@@ -125,7 +125,7 @@ class FireBaseManager {
         }
     }
 
-    fun getServiceIdByName(specialityName: String, commerceId: String, onComplete: (String?) -> Unit) {
+    fun getServiceIdByName(specialityName: String, commerceId: String, onComplete: (String) -> Unit) {
         firestore.collection("commerces")
             .document(commerceId)
             .collection("specialities")

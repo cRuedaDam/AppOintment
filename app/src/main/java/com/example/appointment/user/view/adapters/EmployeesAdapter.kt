@@ -13,11 +13,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class EmployeesAdapter(
-    private val employeesList: MutableList<Employee> = mutableListOf(),
-    private val commerceName: String? = null,
-    private val commerceType: String? = null,
-    private val specialityName: String? = null,
-    private val specialityId: String? = null
+    private val employeesList: MutableList<Employee> = mutableListOf()
+    //private val commerceName: String? = null,
+    //private val commerceType: String? = null,
+    //private val specialityName: String? = null,
+    //private val specialityId: String? = null
 ) : RecyclerView.Adapter<EmployeesAdapter.ViewHolder>() {
 
     private val db = FirebaseFirestore.getInstance()
@@ -51,8 +51,7 @@ class EmployeesAdapter(
                 val context = holder.itemView.context
                 val intent = Intent(context, SelectAppointmentTime::class.java)
 
-                intent.putExtra("SPECIALITY_NAME", specialityName)
-                intent.putExtra("SPECIALITY_ID", specialityId)
+                //intent.putExtra("SPECIALITY_NAME", specialityName)
 
                 context.startActivity(intent)
 

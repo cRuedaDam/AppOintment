@@ -16,12 +16,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 class SpecialitiesAdapter(
     private val specialitiesList: MutableList<Speciality> = mutableListOf(),
     private val commerceName: String? = null,
-    private val commerceType: String? = null
+    private val commerceType: String? = null,
+    private val commerceId: String?= null
 ) : RecyclerView.Adapter<SpecialitiesAdapter.ViewHolder>() {
 
     private val db = FirebaseFirestore.getInstance()
-    private val currentCommerce = FirebaseAuth.getInstance().currentUser
-    private val commerceId = currentCommerce?.uid
     private var onSpecialitiesFilterListener: OnSpecialitiesFilterListener? = null
     private var filteredList: List<Speciality> = specialitiesList
 

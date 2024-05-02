@@ -35,7 +35,7 @@ class SelectAppointmentEmployee : AppCompatActivity(),
 
         goToSelectSpeciality()
         fillEmployeesRecyclerView()
-        //filteredSearch()
+        filteredSearch()
         Log.d("Current Activity:", "SelectAppointmentEmployee")
     }
 
@@ -55,7 +55,7 @@ class SelectAppointmentEmployee : AppCompatActivity(),
 
     private fun filteredSearch() {
 
-        /*employeesAdapter =
+        employeesAdapter =
             EmployeesAdapter(employeesList) // Iguala el adaptador a la lista recibida desde el Employee Adapter
         employeesAdapter.setOnEmployeesFilterListener(this) // Se le agrega un listener al adaptador
         rvEmployees.adapter = employeesAdapter // El Recycler View se iguala al adaptador*/
@@ -84,9 +84,9 @@ class SelectAppointmentEmployee : AppCompatActivity(),
         val specialityName = intent.getStringExtra("SPECIALITY_NAME")
         val commerceId = intent.getStringExtra("COMMERCE_ID")
 
-        if (!specialityName.isNullOrEmpty() && !commerceId.isNullOrEmpty()){
-            firebaseManager.getServiceIdByName(specialityName,commerceId) { specialityId ->
-                if(specialityId != null) {
+        if (!specialityName.isNullOrEmpty() && !commerceId.isNullOrEmpty()) {
+            firebaseManager.getServiceIdByName(specialityName, commerceId) { specialityId ->
+                if (specialityId != null) {
                     Log.d("SPECIALITY_ID", specialityId ?: "null")
                     Log.d("SPECIALITY_NAME", specialityName ?: "null")
                     Log.d("COMMERCE_ID", commerceId ?: "null")
