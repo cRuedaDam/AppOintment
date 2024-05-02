@@ -3,6 +3,7 @@ package com.example.appointment.user.view.activities.appointments
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.appointment.databinding.ActivityAppointmentCategoryBinding
 import com.example.appointment.user.view.activities.home.UserHome
 
@@ -13,6 +14,7 @@ class AppointmentCategory : AppCompatActivity() {
         binding = ActivityAppointmentCategoryBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        Log.d("Current Activity: ", "AppointmentCategory")
 
         goToHome()
         chooseAnItem()

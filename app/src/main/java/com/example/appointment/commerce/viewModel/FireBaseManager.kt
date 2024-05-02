@@ -125,6 +125,27 @@ class FireBaseManager {
         }
     }
 
+    fun getServiceIdByName(specialityName: String, commerceId: String, onComplete: (String?) -> Unit) {
+        firestore.collection("commerces")
+            .document(commerceId)
+            .collection("specialities")
+            .whereEqualTo("name", specialityName)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val serviceId = document.id
+                    onComplete(serviceId)
+                    return@addOnSuccessListener
+                }
+                Log.d("ERROR:", "No existe el servicio: $specialityName")
+                onComplete("No existe el servicio: $specialityName")
+            }
+            .addOnFailureListener { exception ->
+                onComplete("No existe el servicio: $specialityName")
+            }
+    }
+
+
     //Appointments
     fun deleteAppointment(appointmentId: String) {
         firestore.document("appointments/$appointmentId")

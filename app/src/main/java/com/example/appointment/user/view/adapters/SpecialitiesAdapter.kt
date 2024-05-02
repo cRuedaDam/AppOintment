@@ -13,13 +13,16 @@ import com.example.appointment.user.view.activities.appointments.SelectAppointme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class SpecialitiesAdapter(private val specialitiesList: List<Speciality>) :
-    RecyclerView.Adapter<SpecialitiesAdapter.ViewHolder>() {
+class SpecialitiesAdapter(
+    private val specialitiesList: MutableList<Speciality> = mutableListOf(),
+    private val commerceName: String? = null,
+    private val commerceType: String? = null
+) : RecyclerView.Adapter<SpecialitiesAdapter.ViewHolder>() {
 
     private val db = FirebaseFirestore.getInstance()
     private val currentCommerce = FirebaseAuth.getInstance().currentUser
     private val commerceId = currentCommerce?.uid
-    private var onSpecialityFilterListener: OnSpecialityFilterListener? = null
+    private var onSpecialitiesFilterListener: OnSpecialitiesFilterListener? = null
     private var filteredList: List<Speciality> = specialitiesList
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -29,13 +32,10 @@ class SpecialitiesAdapter(private val specialitiesList: List<Speciality>) :
         val specialityPrice: TextView = itemView.findViewById(R.id.txt_speciality_price)
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_speciality, parent, false)
-        return SpecialitiesAdapter.ViewHolder(itemView)
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: SpecialitiesAdapter.ViewHolder, position: Int) {
@@ -59,11 +59,17 @@ class SpecialitiesAdapter(private val specialitiesList: List<Speciality>) :
                     .addOnSuccessListener { querySnapshot ->
 
                         val context = holder.itemView.context
-                        val intent = Intent(context, SelectAppointmentEmployee::class.java) // Viajamos a donde nos diga la clase desde la que se llama
+                        val intent = Intent(
+                            context,
+                            SelectAppointmentEmployee::class.java
+                        ) // Viajamos a donde nos diga la clase desde la que se llama
 
-                        intent.putExtra("specialityName", speciality.name)
-                        intent.putExtra("specialityTimeRequired", speciality.timeRequired)
-                        intent.putExtra("specialityPrice", speciality.price)
+                        intent.putExtra("SPECIALITY_NAME", speciality.name)
+                        intent.putExtra("SPECIALITY_TIME_REQUIRED", speciality.timeRequired)
+                        intent.putExtra("SPECIALITY_PRICE", speciality.price)
+                        intent.putExtra("COMMERCE_NAME", commerceName)
+                        intent.putExtra("COMMERCE_TYPE", commerceType)
+                        intent.putExtra("COMMERCE_ID", commerceId)
 
                         context.startActivity(intent)
 
@@ -80,8 +86,8 @@ class SpecialitiesAdapter(private val specialitiesList: List<Speciality>) :
         return specialitiesList.size
     }
 
-    fun setOnSpecialityFilterListener(listener: OnSpecialityFilterListener) {
-        onSpecialityFilterListener = listener
+    fun setOnSpecialitiesFilterListener(listener: OnSpecialitiesFilterListener) {
+        onSpecialitiesFilterListener = listener
     }
 
     fun filter(text: String) {
@@ -96,10 +102,10 @@ class SpecialitiesAdapter(private val specialitiesList: List<Speciality>) :
             specialitiesList.toList()
         }
         notifyDataSetChanged()
-        onSpecialityFilterListener?.onFilterTextChanged(text)
+        onSpecialitiesFilterListener?.onFilterTextChanged(text)
     }
 
-    interface OnSpecialityFilterListener {
+    interface OnSpecialitiesFilterListener {
         fun onFilterTextChanged(text: String)
     }
 

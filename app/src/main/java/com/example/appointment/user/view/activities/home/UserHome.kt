@@ -51,6 +51,7 @@ class UserHome : AppCompatActivity() {
         goToMenu()
         chooseProfileImage()
         makeAnAppointment()
+        Log.d("Current Activity: ", "UserHome")
 
         if (userId != null) {
             getCurrentUserData(userId)

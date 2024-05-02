@@ -10,7 +10,8 @@ import com.example.appointment.R
 import com.example.appointment.user.model.Commerce
 import com.example.appointment.user.view.activities.appointments.SelectAppointmentSpeciality
 
-class CommerceAdapter(private val commerceList: MutableList<Commerce> = mutableListOf()) : RecyclerView.Adapter<CommerceAdapter.CommerceViewHolder>() {
+class CommerceAdapter(private val commerceList: MutableList<Commerce> = mutableListOf()) :
+    RecyclerView.Adapter<CommerceAdapter.CommerceViewHolder>() {
 
     private var onCommerceFilterListener: OnCommerceFilterListener? = null
     private var filteredList: List<Commerce> = commerceList
@@ -27,7 +28,7 @@ class CommerceAdapter(private val commerceList: MutableList<Commerce> = mutableL
     }
 
     override fun onBindViewHolder(holder: CommerceViewHolder, position: Int) {
-        if (position < filteredList.size){
+        if (position < filteredList.size) {
 
             val commerce = filteredList[position]
 
@@ -49,10 +50,11 @@ class CommerceAdapter(private val commerceList: MutableList<Commerce> = mutableL
             holder.itemView.setOnClickListener {
                 val intent = Intent(holder.itemView.context, SelectAppointmentSpeciality::class.java)
                 intent.putExtra("COMMERCE_NAME", commerce.commerce_name)
+                intent.putExtra("COMMERCE_TYPE", commerce.commerce_type)
                 holder.itemView.context.startActivity(intent) // Iniciar la actividad con el Intent
             }
 
-        }else{
+        } else {
             holder.itemView.visibility = View.GONE
         }
     }

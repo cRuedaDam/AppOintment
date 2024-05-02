@@ -26,6 +26,7 @@ class ChangeUserPassword : AppCompatActivity() {
 
         goToEditProfile()
         changePassword()
+        Log.d("Current Activity: ", "ChangeUserPassword")
     }
 
     private fun goToEditProfile() {

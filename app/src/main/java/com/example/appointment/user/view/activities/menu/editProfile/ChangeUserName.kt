@@ -3,6 +3,7 @@ package com.example.appointment.user.view.activities.menu.editProfile
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.appointment.R
 import com.example.appointment.commerce.view.activities.menu.CommerceMenu
@@ -24,6 +25,7 @@ class ChangeUserName : AppCompatActivity() {
 
         goToEditProfile()
         changeName()
+        Log.d("Current Activity: ", "ChangeUserName")
     }
 
     private fun goToEditProfile() {

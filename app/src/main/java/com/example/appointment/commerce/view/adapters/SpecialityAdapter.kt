@@ -12,9 +12,7 @@ import com.example.appointment.commerce.view.activities.menu.specialities.Commer
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class SpecialityAdapter(
-    private val specialitiesList: List<Speciality>
-) :
+class SpecialityAdapter(private val specialitiesList: MutableList<Speciality> = mutableListOf()) :
     RecyclerView.Adapter<SpecialityAdapter.ViewHolder>() {
 
     private val db = FirebaseFirestore.getInstance()

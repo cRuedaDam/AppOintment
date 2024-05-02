@@ -14,34 +14,37 @@ import com.example.appointment.commerce.viewModel.FireBaseManager
 import com.example.appointment.databinding.ActivitySelectAppointmentSpecialityBinding
 import com.example.appointment.user.view.adapters.SpecialitiesAdapter
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.UUID
 
 class SelectAppointmentSpeciality : AppCompatActivity(),
-    SpecialitiesAdapter.OnSpecialityFilterListener {
+    SpecialitiesAdapter.OnSpecialitiesFilterListener {
 
     private lateinit var binding: ActivitySelectAppointmentSpecialityBinding
     private val db = FirebaseFirestore.getInstance()
-    private lateinit var specialityAdapter: SpecialitiesAdapter
-    private val specialityList = ArrayList<Speciality>()
+    private lateinit var specialitiesAdapter: SpecialitiesAdapter
+    private val specialitiesList = ArrayList<Speciality>()
     private lateinit var rvSpecialities: RecyclerView
     private lateinit var edtSearch: EditText
     private var firebaseManager = FireBaseManager()
-    private lateinit var commerceId: UUID
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySelectAppointmentSpecialityBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
         goToSelectCommerce()
         fillSpecialitiesRecyclerView()
         filteredSearch()
+        Log.d("Current Activity: ", "SelectAppointmentSpeciality")
     }
 
     private fun fillSpecialitiesRecyclerView() {
+
         rvSpecialities = binding.rvSpecialities
         rvSpecialities.layoutManager = LinearLayoutManager(this)
 
         val commerceName = intent.getStringExtra("COMMERCE_NAME")
+        val commerceType = intent.getStringExtra("COMMERCE_TYPE")
 
         if (!commerceName.isNullOrEmpty()) {
             // Obtener el ID del comercio por su nombre
@@ -55,13 +58,15 @@ class SelectAppointmentSpeciality : AppCompatActivity(),
                             return@addSnapshotListener
                         }
 
-                        val specialitiesList = mutableListOf<Speciality>()
-                        for (document in querySnapshot!!) {
-                            val speciality = document.toObject(Speciality::class.java)
-                            specialitiesList.add(speciality)
+                        if (querySnapshot != null) {
+                            for (document in querySnapshot) {
+                                val specialities = document.toObject(Speciality::class.java)
+                                specialitiesList.add(specialities)
+                            }
                         }
-                        val specialityAdapter = SpecialitiesAdapter(specialitiesList)
-                        rvSpecialities.adapter = specialityAdapter
+
+                        specialitiesAdapter = SpecialitiesAdapter(specialitiesList, commerceName, commerceType)
+                        rvSpecialities.adapter = specialitiesAdapter
                     }
                 } else {
                     // Manejar el caso en que no se encuentre ningún comercio con el nombre dado
@@ -78,19 +83,20 @@ class SelectAppointmentSpeciality : AppCompatActivity(),
     }
 
     private fun goToSelectCommerce() {
+        val category = intent.getStringExtra("COMMERCE_TYPE")
         binding.backArrowIcon.setOnClickListener {
-            val intent =
-                Intent(this@SelectAppointmentSpeciality, AppointmentChooseCommerce::class.java)
+            val intent = Intent(this@SelectAppointmentSpeciality, AppointmentChooseCommerce::class.java)
+            intent.putExtra("CATEGORY", category)
             startActivity(intent)
         }
     }
 
     private fun filteredSearch() {
 
-        specialityAdapter =
-            SpecialitiesAdapter(specialityList) // Iguala el adaptador a la lista recibida desde el Employee Adapter
-        specialityAdapter.setOnSpecialityFilterListener(this) // Se le agrega un listener al adaptador
-        rvSpecialities.adapter = specialityAdapter // El Recycler View se iguala al adaptador
+        specialitiesAdapter =
+            SpecialitiesAdapter(specialitiesList) // Iguala el adaptador a la lista recibida desde el Employee Adapter
+        specialitiesAdapter.setOnSpecialitiesFilterListener(this) // Se le agrega un listener al adaptador
+        rvSpecialities.adapter = specialitiesAdapter // El Recycler View se iguala al adaptador
 
         edtSearch = binding.etSearchSpeciality
 
@@ -101,7 +107,7 @@ class SelectAppointmentSpeciality : AppCompatActivity(),
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                specialityAdapter.filter(s.toString()) // LLamamos a la fucnión filter de EmployeeAdapter y le pasamos como parámetro el charSquence para que pueda realizar la búsqueda
+                specialitiesAdapter.filter(s.toString()) // LLamamos a la fucnión filter de EmployeeAdapter y le pasamos como parámetro el charSquence para que pueda realizar la búsqueda
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -110,6 +116,6 @@ class SelectAppointmentSpeciality : AppCompatActivity(),
     }
 
     override fun onFilterTextChanged(text: String) {
-        specialityAdapter.filter(text)
+        specialitiesAdapter.filter(text)
     }
 }

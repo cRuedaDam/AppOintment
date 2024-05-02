@@ -24,6 +24,7 @@ class AppointmentChooseCommerce : AppCompatActivity(), CommerceAdapter.OnCommerc
     private val commerceList = ArrayList<Commerce>()
     private lateinit var rvCommerces: RecyclerView
     private lateinit var edtSearch: EditText
+    private lateinit var commerceType: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityChooseCommerceBinding.inflate(layoutInflater)
@@ -33,6 +34,7 @@ class AppointmentChooseCommerce : AppCompatActivity(), CommerceAdapter.OnCommerc
         fillCommercesRecyclerView()
         goToTypes()
         filteredSearch()
+        Log.d("Current Activity: ", "AppointmentChooseCommerce")
     }
 
     private fun filteredSearch() {
@@ -70,7 +72,6 @@ class AppointmentChooseCommerce : AppCompatActivity(), CommerceAdapter.OnCommerc
 
         val category = intent.getStringExtra("CATEGORY")
         val commerceRef = db.collection("commerces")
-
 
         commerceRef.whereEqualTo("commerce_type", category).get()
             .addOnSuccessListener { documents ->

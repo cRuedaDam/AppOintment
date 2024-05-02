@@ -78,8 +78,8 @@ class CommerceSpecialities : AppCompatActivity(), SpecialityAdapter.OnSpeciality
         rvSpecialities = binding.rvSpecialities
         rvSpecialities.layoutManager = LinearLayoutManager(this)
 
-        val currenCommerce = FirebaseAuth.getInstance().currentUser
-        val commerceId = currenCommerce?.uid
+        val currentCommerce = FirebaseAuth.getInstance().currentUser
+        val commerceId = currentCommerce?.uid
 
         if (commerceId != null) {
             val specialitiesCollection = firestore.collection("commerces/$commerceId/specialities")

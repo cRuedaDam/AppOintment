@@ -25,6 +25,7 @@ class AppointmentCustomerView : AppCompatActivity() {
         binding = ActivityAppointmentCustomerViewBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        Log.d("Current Activity: ", "AppointmentCustomerView")
 
         goBackHome()
         fillAppointmentData()
