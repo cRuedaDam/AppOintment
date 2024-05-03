@@ -27,6 +27,11 @@ class SelectAppointmentEmployee : AppCompatActivity(),
     private lateinit var rvEmployees: RecyclerView
     private lateinit var edtSearch: EditText
     private var firebaseManager = FireBaseManager()
+    private var commerceName: String? = null
+    private var commerceType: String? = null
+    private var commerceId: String? = null
+    private var specialityName: String? = null
+    private var specialityIds: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySelectAppointmentEmployeeBinding.inflate(layoutInflater)
@@ -41,8 +46,9 @@ class SelectAppointmentEmployee : AppCompatActivity(),
 
 
     private fun goToSelectSpeciality() {
-        val commerceName = intent.getStringExtra("COMMERCE_NAME")
-        val commerceType = intent.getStringExtra("COMMERCE_TYPE")
+
+        commerceName = intent.getStringExtra("COMMERCE_NAME")
+        commerceType = intent.getStringExtra("COMMERCE_TYPE")
 
         binding.backArrowIcon.setOnClickListener {
             val intent =
@@ -81,11 +87,11 @@ class SelectAppointmentEmployee : AppCompatActivity(),
         rvEmployees = binding.rvEmployees
         rvEmployees.layoutManager = LinearLayoutManager(this)
 
-        val specialityName = intent.getStringExtra("SPECIALITY_NAME")
-        val commerceId = intent.getStringExtra("COMMERCE_ID")
+        specialityName = intent.getStringExtra("SPECIALITY_NAME")
+        commerceId = intent.getStringExtra("COMMERCE_ID")
 
         if (!specialityName.isNullOrEmpty() && !commerceId.isNullOrEmpty()) {
-            firebaseManager.getServiceIdByName(specialityName, commerceId) { specialityId ->
+            firebaseManager.getServiceIdByName(specialityName!!, commerceId!!) { specialityId ->
                 if (specialityId != null) {
                     Log.d("SPECIALITY_ID", specialityId ?: "null")
                     Log.d("SPECIALITY_NAME", specialityName ?: "null")
@@ -99,7 +105,8 @@ class SelectAppointmentEmployee : AppCompatActivity(),
                                 val employee = document.toObject(Employee::class.java)
                                 employee?.let { employeesList.add(it) }
                             }
-                            employeesAdapter = EmployeesAdapter(employeesList)
+                            specialityIds = specialityId
+                            employeesAdapter = EmployeesAdapter(employeesList,commerceName,commerceType,commerceId,specialityName,specialityId)
                             rvEmployees.adapter = employeesAdapter
                         }
                         .addOnFailureListener { exception ->

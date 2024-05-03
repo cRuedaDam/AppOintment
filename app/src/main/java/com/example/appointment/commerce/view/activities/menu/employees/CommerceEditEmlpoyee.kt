@@ -199,11 +199,8 @@ class CommerceEditEmlpoyee : AppCompatActivity() {
         val employeeCheckOut = intent.getStringExtra("checkOut")
 
         binding.edtEmployeeName.text = Editable.Factory.getInstance().newEditable(employeeName)
-        binding.edtEmployeeLastName.text =
-            Editable.Factory.getInstance().newEditable(employeeLastName)
-        binding.btnCheckInTime.text =
-            Editable.Factory.getInstance().newEditable(employeeCheckIn)
-        binding.btnCheckOutTime.text =
-            Editable.Factory.getInstance().newEditable(employeeCheckOut)
+        binding.edtEmployeeLastName.text = Editable.Factory.getInstance().newEditable(employeeLastName)
+        binding.btnCheckInTime.text = Editable.Factory.getInstance().newEditable(employeeCheckIn)
+        binding.btnCheckOutTime.text = Editable.Factory.getInstance().newEditable(employeeCheckOut)
     }
 }
