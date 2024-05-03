@@ -261,5 +261,6 @@
     <string name="choose_an_appointment">Selecciona una cita</string>
     <string name="date">Fecha</string>
     <string name="time">Hora</string>
+    <string name="available_schedule">Horarios disponibles</string>
 
 </resources>

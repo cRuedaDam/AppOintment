@@ -5,10 +5,14 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.view.View
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.appointment.databinding.ActivitySelectAppointmentTimeBinding
+import com.example.appointment.user.view.adapters.TimeAdapter
 
 class SelectAppointmentTime : AppCompatActivity() {
 
@@ -31,6 +35,7 @@ class SelectAppointmentTime : AppCompatActivity() {
 
         goToSelectEmployee()
         selectDate()
+        fillScheduleRV()
     }
 
     private fun goToSelectEmployee() {
@@ -46,9 +51,30 @@ class SelectAppointmentTime : AppCompatActivity() {
         }
     }
 
+    private fun fillScheduleRV(){
+        val timeList = listOf(
+            "10:00", "10:30", "11:00", "11:30", "12:00", // Agrega más horas según sea necesario
+            // ...
+        )
+
+        // Configura el RecyclerView con la lista de horas
+        val rvTimes: RecyclerView = binding.rvSchedule
+        val layoutManager = LinearLayoutManager(this)
+        val adapter = TimeAdapter(timeList)
+
+        rvTimes.layoutManager = layoutManager
+        rvTimes.adapter = adapter
+
+    }
+
     private fun selectDate(){
         binding.btnSelectDate.setOnClickListener {
             showDatePicker()
+            if (binding.btnSelectDate.text == "Fecha"){
+                binding.lyAvailableAppointments.visibility = View.GONE
+            }else{
+                binding.lyAvailableAppointments.visibility = View.VISIBLE
+            }
         }
     }
 

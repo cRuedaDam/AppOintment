@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Estado cuando el botón está habilitado -->
-    <item android:state_enabled="true" android:drawable="@style/MainButtonStyle" />
-    <!-- Estado cuando el botón está deshabilitado -->
-    <item android:drawable="@color/info" />
-</selector>
