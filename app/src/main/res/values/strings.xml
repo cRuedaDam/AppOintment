@@ -258,8 +258,9 @@
     <string name="choose_a_speciality">Selecciona una especialidad</string>
     <string name="choose_an_employee">Selecciona un empleado</string>
     <string name="search_employee">Buscar empleado</string>
-    <string name="choose_an_appointment">Selecciona una cita</string>
+    <string name="choose_an_appointment">Selecciona fecha y hora</string>
     <string name="date">Fecha</string>
+    <string name="select_date">Selecciona una fecha</string>
     <string name="time">Hora</string>
     <string name="available_schedule">Horarios disponibles</string>
 

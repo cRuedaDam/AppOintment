@@ -77,7 +77,7 @@
         android:id="@+id/btn_select_date"
         style="@style/TimePickerBtnStyle"
         android:layout_marginTop="30dp"
-        android:hint="@string/date"
+        android:hint="@string/select_date"
         android:maxLines="1"
         android:onClick="showDatePicker"
         android:paddingStart="40dp"
@@ -101,32 +101,42 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_separator"
-        android:visibility="visible">
+        app:layout_constraintTop_toBottomOf="@id/view_separator">
 
-    <TextView
-        android:id="@+id/txt_available_appointments"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:text="@string/available_schedule"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ly_available_appointments" />
+        <TextView
+            android:id="@+id/txt_available_appointments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:text="@string/available_schedule"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ly_available_appointments" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_schedule"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="20dp"
-        app:layout_constraintEnd_toEndOf="@id/ly_available_appointments"
-        app:layout_constraintStart_toStartOf="@id/ly_available_appointments"
-        app:layout_constraintTop_toBottomOf="@id/txt_available_appointments" />
+        <ScrollView
+            android:id="@+id/sv_times"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_available_appointments">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp"
+                app:layout_constraintEnd_toEndOf="@id/ly_available_appointments"
+                app:layout_constraintStart_toStartOf="@id/ly_available_appointments"
+                app:layout_constraintTop_toBottomOf="@id/txt_available_appointments" />
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
@@ -138,7 +148,7 @@
         android:id="@+id/btn_select_appointment"
         style="@style/MainButtonStyle"
         android:enabled="true"
-        android:text="@string/accept"
+        android:text="Reservar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />

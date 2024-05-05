@@ -18,7 +18,8 @@ class EmployeesAdapter(
     private val commerceType: String? = null,
     private val commerceId: String? = null,
     private val specialityName: String? = null,
-    private val specialityId: String? = null
+    private val specialityId: String? = null,
+    private val employeeId: String? = null
 ) : RecyclerView.Adapter<EmployeesAdapter.ViewHolder>() {
 
     private val db = FirebaseFirestore.getInstance()
@@ -58,6 +59,7 @@ class EmployeesAdapter(
                 intent.putExtra("COMMERCE_NAME", commerceName)
                 intent.putExtra("COMMERCE_TYPE", commerceType)
                 intent.putExtra("COMMERCE_ID", commerceId)
+                intent.putExtra("EMPLOYEE_ID", employeeId)
 
 
                 context.startActivity(intent)

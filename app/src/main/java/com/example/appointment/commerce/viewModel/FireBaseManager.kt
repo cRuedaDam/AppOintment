@@ -44,6 +44,26 @@ class FireBaseManager {
             }
     }
 
+    fun getEmployeeWorkSchedule(employeeId: String, commerceId: String, onComplete: (String, String) -> Unit) {
+        val employeeRef = firestore.collection("commerces").document(commerceId)
+            .collection("employees").document(employeeId)
+
+        employeeRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val entryTime = document.getString("checkInTime") ?: ""
+                    val exitTime = document.getString("checkOutTime") ?: ""
+                    onComplete(entryTime, exitTime)
+                } else {
+                    onComplete("", "")
+                }
+            }
+            .addOnFailureListener { exception ->
+                onComplete("", "")
+                println("Error al obtener el horario de trabajo del empleado: $exception")
+            }
+    }
+
 
     //Specialities
     fun addSpeciality(speciality: Speciality, commerceId: String) {
@@ -142,6 +162,26 @@ class FireBaseManager {
             }
             .addOnFailureListener { exception ->
                 onComplete("No existe el servicio: $specialityName")
+            }
+    }
+
+    fun getSpecialityTimeRequired(specialityId: String, commerceId: String, onComplete: (Int) -> Unit) {
+        val specialityRef = firestore.collection("commerces").document(commerceId)
+            .collection("specialities").document(specialityId)
+
+        specialityRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val timeRequiredString = document.getString("timeRequired") ?: "0"
+                    val timeRequired = timeRequiredString.toInt()
+                    onComplete(timeRequired)
+                } else {
+                    onComplete(0)
+                }
+            }
+            .addOnFailureListener { exception ->
+                onComplete(0)
+                println("Error al obtener el timeRequired de la especialidad: $exception")
             }
     }
 

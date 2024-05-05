@@ -31,6 +31,7 @@ class SelectAppointmentEmployee : AppCompatActivity(),
     private var commerceType: String? = null
     private var commerceId: String? = null
     private var specialityName: String? = null
+    private var employeeId: String? = null
     private var specialityIds: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,10 +104,12 @@ class SelectAppointmentEmployee : AppCompatActivity(),
                             val employeesList = mutableListOf<Employee>()
                             for (document in querySnapshot.documents) {
                                 val employee = document.toObject(Employee::class.java)
-                                employee?.let { employeesList.add(it) }
+                                employee?.let {
+                                    employeeId = document.id
+                                    employeesList.add(it) }
                             }
                             specialityIds = specialityId
-                            employeesAdapter = EmployeesAdapter(employeesList,commerceName,commerceType,commerceId,specialityName,specialityId)
+                            employeesAdapter = EmployeesAdapter(employeesList,commerceName,commerceType,commerceId,specialityName,specialityId,employeeId)
                             rvEmployees.adapter = employeesAdapter
                         }
                         .addOnFailureListener { exception ->
