@@ -59,7 +59,7 @@ class ConfirmAppointment : AppCompatActivity() {
         binding.btnConfirmAppointment.setOnClickListener {
 
             if (binding.edtOptionalRequest.text.isNotEmpty()) {
-                optionalRequest = binding.edtOptionalRequest.toString()
+                optionalRequest = binding.edtOptionalRequest.text.toString()
             }else{
                 optionalRequest = ""
             }

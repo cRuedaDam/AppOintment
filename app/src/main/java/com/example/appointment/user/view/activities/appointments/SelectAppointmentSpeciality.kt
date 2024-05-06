@@ -25,11 +25,14 @@ class SelectAppointmentSpeciality : AppCompatActivity(),
     private lateinit var rvSpecialities: RecyclerView
     private lateinit var edtSearch: EditText
     private var firebaseManager = FireBaseManager()
+    private var commerceFullAddress: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySelectAppointmentSpecialityBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        commerceFullAddress = intent.getStringExtra("COMMERCE_FULL_ADDRESS").toString()
 
 
         goToSelectCommerce()
@@ -45,7 +48,6 @@ class SelectAppointmentSpeciality : AppCompatActivity(),
 
         val commerceName = intent.getStringExtra("COMMERCE_NAME")
         val commerceType = intent.getStringExtra("COMMERCE_TYPE")
-        val commerceFullAddress = intent.getStringExtra("COMMERCE_FULL_ADDRESS")
 
         if (!commerceName.isNullOrEmpty()) {
             // Obtener el ID del comercio por su nombre

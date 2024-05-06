@@ -60,6 +60,7 @@ class EmployeesAdapter(
                 intent.putExtra("COMMERCE_NAME", commerceName)
                 intent.putExtra("COMMERCE_TYPE", commerceType)
                 intent.putExtra("COMMERCE_ID", commerceId)
+                intent.putExtra("COMMERCE_FULL_ADDRESS", commerceFullAddress)
                 intent.putExtra("EMPLOYEE_ID", employeeId)
 
 

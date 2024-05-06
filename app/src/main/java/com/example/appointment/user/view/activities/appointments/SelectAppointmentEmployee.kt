@@ -40,6 +40,8 @@ class SelectAppointmentEmployee : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        commerceFullAddress = intent.getStringExtra("COMMERCE_FULL_ADDRESS")
+
         goToSelectSpeciality()
         fillEmployeesRecyclerView()
         filteredSearch()
