@@ -30,6 +30,7 @@ class SelectAppointmentEmployee : AppCompatActivity(),
     private var commerceName: String? = null
     private var commerceType: String? = null
     private var commerceId: String? = null
+    private var commerceFullAddress: String? = null
     private var specialityName: String? = null
     private var employeeId: String? = null
     private var specialityIds: String? = null
@@ -109,7 +110,7 @@ class SelectAppointmentEmployee : AppCompatActivity(),
                                     employeesList.add(it) }
                             }
                             specialityIds = specialityId
-                            employeesAdapter = EmployeesAdapter(employeesList,commerceName,commerceType,commerceId,specialityName,specialityId,employeeId)
+                            employeesAdapter = EmployeesAdapter(employeesList,commerceName,commerceType,commerceId,commerceFullAddress,specialityName,specialityId,employeeId)
                             rvEmployees.adapter = employeesAdapter
                         }
                         .addOnFailureListener { exception ->

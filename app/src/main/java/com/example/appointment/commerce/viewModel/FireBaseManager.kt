@@ -44,7 +44,11 @@ class FireBaseManager {
             }
     }
 
-    fun getEmployeeWorkSchedule(employeeId: String, commerceId: String, onComplete: (String, String) -> Unit) {
+    fun getEmployeeWorkSchedule(
+        employeeId: String,
+        commerceId: String,
+        onComplete: (String, String) -> Unit
+    ) {
         val employeeRef = firestore.collection("commerces").document(commerceId)
             .collection("employees").document(employeeId)
 
@@ -145,7 +149,11 @@ class FireBaseManager {
         }
     }
 
-    fun getServiceIdByName(specialityName: String, commerceId: String, onComplete: (String) -> Unit) {
+    fun getServiceIdByName(
+        specialityName: String,
+        commerceId: String,
+        onComplete: (String) -> Unit
+    ) {
         firestore.collection("commerces")
             .document(commerceId)
             .collection("specialities")
@@ -165,7 +173,11 @@ class FireBaseManager {
             }
     }
 
-    fun getSpecialityTimeRequired(specialityId: String, commerceId: String, onComplete: (Int) -> Unit) {
+    fun getSpecialityTimeRequired(
+        specialityId: String,
+        commerceId: String,
+        onComplete: (Int) -> Unit
+    ) {
         val specialityRef = firestore.collection("commerces").document(commerceId)
             .collection("specialities").document(specialityId)
 
@@ -198,6 +210,39 @@ class FireBaseManager {
             }
     }
 
+    fun addAppointment(
+        appointmentDate: String,
+        appointmentTime: String,
+        commerceId: String,
+        commerceName: String,
+        employeeId: String,
+        optionalRequest: String,
+        serviceId: String,
+        userId: String
+    ) {
+
+        val appointmentsCollection = firestore.collection("appointments")
+        val appointmentData = hashMapOf(
+            "appointment_date" to appointmentDate,
+            "appointment_time" to appointmentTime,
+            "commerce_id" to commerceId,
+            "commerce_name" to commerceName,
+            "employee_id" to employeeId,
+            "optional_request" to optionalRequest,
+            "service_id" to serviceId,
+            "user_id" to userId
+        )
+
+        appointmentsCollection.add(appointmentData)
+            .addOnSuccessListener {
+                Log.d("FirebaseMsg", "La cita se ha añadido a la Base de datos.")
+            }
+            .addOnFailureListener {
+                Log.d("FirebaseMsg", "Error al añadir la cita.")
+            }
+
+    }
+
 
     //Users
     fun getUserNameByUid(userId: String, onComplete: (String) -> Unit) {
@@ -220,7 +265,7 @@ class FireBaseManager {
             }
     }
 
-    fun changeUserEmail(userId: String, newUserEmail: String){
+    fun changeUserEmail(userId: String, newUserEmail: String) {
         val userRef = firestore.collection("users").document(userId)
         userRef.update("user_email", newUserEmail)
             .addOnSuccessListener {
@@ -231,7 +276,7 @@ class FireBaseManager {
             }
     }
 
-    fun changeUserName(userId: String, newUserName: String){
+    fun changeUserName(userId: String, newUserName: String) {
         val userRef = firestore.collection("users").document(userId)
         userRef.update("user_name", newUserName)
             .addOnSuccessListener {
@@ -242,7 +287,7 @@ class FireBaseManager {
             }
     }
 
-    fun changeUserLastName(userId: String, newUserLastName: String){
+    fun changeUserLastName(userId: String, newUserLastName: String) {
         val userRef = firestore.collection("users").document(userId)
         userRef.update("user_last_name", newUserLastName)
             .addOnSuccessListener {
@@ -265,8 +310,7 @@ class FireBaseManager {
     }
 
 
-
-    fun deleteUser(userId: String){
+    fun deleteUser(userId: String) {
         val userRef = firestore.collection("users").document(userId)
         userRef.delete()
             .addOnSuccessListener {
@@ -316,7 +360,7 @@ class FireBaseManager {
             }
     }
 
-    fun changeCommerceName(commerceId: String, newCommerceName: String){
+    fun changeCommerceName(commerceId: String, newCommerceName: String) {
         val commerceRef = firestore.collection("commerces").document(commerceId)
         commerceRef.update("commerce_name", newCommerceName)
             .addOnSuccessListener {
@@ -327,7 +371,7 @@ class FireBaseManager {
             }
     }
 
-    fun deleteCommerce(commerceId: String){
+    fun deleteCommerce(commerceId: String) {
         val commerceRef = firestore.collection("commerces").document(commerceId)
         commerceRef.delete()
             .addOnSuccessListener {
@@ -338,7 +382,7 @@ class FireBaseManager {
             }
     }
 
-    fun changeCommerceEmail(commerceId: String, newCommerceEmail: String){
+    fun changeCommerceEmail(commerceId: String, newCommerceEmail: String) {
         val commerceRef = firestore.collection("commerces").document(commerceId)
         commerceRef.update("commerce_email", newCommerceEmail)
             .addOnSuccessListener {
@@ -381,7 +425,10 @@ class FireBaseManager {
 
         commerceRef.update("address", addressData)
             .addOnSuccessListener {
-                Log.d("FirebaseMsg", "La dirección del comercio se ha cambiado en la Base de datos.")
+                Log.d(
+                    "FirebaseMsg",
+                    "La dirección del comercio se ha cambiado en la Base de datos."
+                )
             }
             .addOnFailureListener { e ->
                 Log.e("FirestoreError", "Error cambiando la dirección del comercio: ${e.message}")

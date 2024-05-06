@@ -17,6 +17,7 @@ class EmployeesAdapter(
     private val commerceName: String? = null,
     private val commerceType: String? = null,
     private val commerceId: String? = null,
+    private val commerceFullAddress: String? = null,
     private val specialityName: String? = null,
     private val specialityId: String? = null,
     private val employeeId: String? = null

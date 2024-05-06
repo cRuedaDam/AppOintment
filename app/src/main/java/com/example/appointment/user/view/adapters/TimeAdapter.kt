@@ -7,21 +7,27 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appointment.R
 
-class TimeAdapter(private val times: List<String>) : RecyclerView.Adapter<TimeAdapter.TimeViewHolder>() {
+class TimeAdapter(private val times: List<String>, private val listener: OnItemSelectedListener) : RecyclerView.Adapter<TimeAdapter.TimeViewHolder>() {
 
     private var selectedIndex = RecyclerView.NO_POSITION
+
+    interface OnItemSelectedListener {
+        fun onItemSelected(item: String)
+    }
 
     inner class TimeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val btnTime: Button = itemView.findViewById(R.id.btn_time)
 
         init {
             btnTime.setOnClickListener {
-                val position = adapterPosition
+                val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     // Actualizar el índice seleccionado
                     selectedIndex = position
                     // Notificar al adaptador sobre el cambio en el estado del botón
                     notifyDataSetChanged()
+                    // Llamar al método de la interfaz para pasar el texto del elemento seleccionado
+                    listener.onItemSelected(times[position])
                 }
             }
         }

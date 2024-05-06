@@ -51,6 +51,7 @@ class CommerceAdapter(private val commerceList: MutableList<Commerce> = mutableL
                 val intent = Intent(holder.itemView.context, SelectAppointmentSpeciality::class.java)
                 intent.putExtra("COMMERCE_NAME", commerce.commerce_name)
                 intent.putExtra("COMMERCE_TYPE", commerce.commerce_type)
+                intent.putExtra("COMMERCE_FULL_ADDRESS", fullAddress)
                 holder.itemView.context.startActivity(intent) // Iniciar la actividad con el Intent
             }
 

@@ -17,7 +17,8 @@ class SpecialitiesAdapter(
     private val specialitiesList: MutableList<Speciality> = mutableListOf(),
     private val commerceName: String? = null,
     private val commerceType: String? = null,
-    private val commerceId: String?= null
+    private val commerceId: String?= null,
+    private val commerceFullAddress: String? = null
 ) : RecyclerView.Adapter<SpecialitiesAdapter.ViewHolder>() {
 
     private val db = FirebaseFirestore.getInstance()
@@ -69,6 +70,7 @@ class SpecialitiesAdapter(
                         intent.putExtra("COMMERCE_NAME", commerceName)
                         intent.putExtra("COMMERCE_TYPE", commerceType)
                         intent.putExtra("COMMERCE_ID", commerceId)
+                        intent.putExtra("COMMERCE_FULL_ADDRESS", commerceFullAddress)
 
                         context.startActivity(intent)
 

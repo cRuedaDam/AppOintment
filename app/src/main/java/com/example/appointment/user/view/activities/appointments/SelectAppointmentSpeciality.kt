@@ -45,6 +45,7 @@ class SelectAppointmentSpeciality : AppCompatActivity(),
 
         val commerceName = intent.getStringExtra("COMMERCE_NAME")
         val commerceType = intent.getStringExtra("COMMERCE_TYPE")
+        val commerceFullAddress = intent.getStringExtra("COMMERCE_FULL_ADDRESS")
 
         if (!commerceName.isNullOrEmpty()) {
             // Obtener el ID del comercio por su nombre
@@ -65,7 +66,7 @@ class SelectAppointmentSpeciality : AppCompatActivity(),
                             }
                         }
 
-                        specialitiesAdapter = SpecialitiesAdapter(specialitiesList, commerceName, commerceType, commerceId)
+                        specialitiesAdapter = SpecialitiesAdapter(specialitiesList, commerceName, commerceType, commerceId, commerceFullAddress)
                         rvSpecialities.adapter = specialitiesAdapter
                     }
                 } else {

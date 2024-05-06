@@ -263,5 +263,8 @@
     <string name="select_date">Selecciona una fecha</string>
     <string name="time">Hora</string>
     <string name="available_schedule">Horarios disponibles</string>
+    <string name="confirm_your_appointment">Confirma tu cita</string>
+    <string name="confirm">Confirmar</string>
+    <string name="any_request">¿Alguna petición especial?</string>
 
 </resources>
