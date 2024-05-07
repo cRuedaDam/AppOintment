@@ -6,12 +6,9 @@ import android.os.Bundle
 import com.example.appointment.R
 import com.example.appointment.common.view.Login
 import com.example.appointment.databinding.ActivityCustomerSignUpBinding
-import com.example.reservapp.common.viewModel.Alerts
+import com.example.appointment.common.viewModel.Alerts
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 
 class CustomerSignUp : AppCompatActivity() {
     private lateinit var binding: ActivityCustomerSignUpBinding

@@ -10,6 +10,7 @@ import com.example.appointment.commerce.view.activities.menu.specialities.Commer
 import com.example.appointment.commerce.view.fragments.CustomAlertDialog
 import com.example.appointment.common.view.Login
 import com.example.appointment.databinding.ActivityCommerceMenuBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class CommerceMenu : AppCompatActivity() {
     private lateinit var binding: ActivityCommerceMenuBinding
@@ -29,6 +30,7 @@ class CommerceMenu : AppCompatActivity() {
                 this@CommerceMenu,
                 "¿Estás seguro de querer cerrar sesión?",
                 onAccept = {
+                    FirebaseAuth.getInstance().signOut()
                     val intent = Intent(this@CommerceMenu, Login::class.java)
                     startActivity(intent)
                 },

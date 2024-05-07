@@ -14,6 +14,7 @@ import com.example.appointment.databinding.ActivityCommerceMenuBinding
 import com.example.appointment.databinding.ActivityUserMenuBinding
 import com.example.appointment.user.view.activities.home.UserHome
 import com.example.appointment.user.view.activities.menu.editProfile.UserEditProfile
+import com.google.firebase.auth.FirebaseAuth
 
 class UserMenu : AppCompatActivity() {
     private lateinit var binding: ActivityUserMenuBinding
@@ -22,10 +23,11 @@ class UserMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         goToEditProfile()
-        //goToEmployees()
+        goToHistory()
         goToUserHome()
         //goToSpecialities()
         userLogOut()
+
     }
     private fun userLogOut() {
         binding.txtLogout.setOnClickListener{
@@ -33,6 +35,7 @@ class UserMenu : AppCompatActivity() {
                 this@UserMenu,
                 "¿Estás seguro de querer cerrar sesión?",
                 onAccept = {
+                    FirebaseAuth.getInstance().signOut()
                     val intent = Intent(this@UserMenu, Login::class.java)
                     startActivity(intent)
                 },
@@ -57,14 +60,14 @@ class UserMenu : AppCompatActivity() {
         }
     }
 
-    /*private fun goToEmployees() {
-        binding.txtEmployees.setOnClickListener {
-            val intent = Intent(this@CommerceMenu, CommerceEmployees::class.java)
+    private fun goToHistory() {
+        binding.txtHistory.setOnClickListener {
+            val intent = Intent(this@UserMenu, UserHistory::class.java)
             startActivity(intent)
         }
     }
 
-    private fun goToSpecialities() {
+    /*private fun goToSpecialities() {
         binding.txtSpecialities.setOnClickListener {
             val intent = Intent(this@CommerceMenu, CommerceSpecialities::class.java)
             startActivity(intent)

@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import com.example.appointment.R
 import com.example.appointment.commerce.model.Speciality
 import com.example.appointment.commerce.viewModel.FireBaseManager
 import com.example.appointment.databinding.ActivityCommerceAddSpecialityBinding
-import com.example.reservapp.common.viewModel.Alerts
+import com.example.appointment.common.viewModel.Alerts
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope

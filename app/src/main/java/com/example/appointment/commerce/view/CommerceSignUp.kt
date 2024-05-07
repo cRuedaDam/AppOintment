@@ -8,7 +8,7 @@ import com.example.appointment.R
 import com.example.appointment.commerce.view.fragments.TimePickerDialogFragment
 import com.example.appointment.common.view.Login
 import com.example.appointment.databinding.ActivityCommerceSignUpBinding
-import com.example.reservapp.common.viewModel.Alerts
+import com.example.appointment.common.viewModel.Alerts
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers

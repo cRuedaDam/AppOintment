@@ -142,7 +142,6 @@
     <string name="wait_msg">Espere por favor...</string>
 
     <!--                Prefs File                  -->
-    <string name="prefs_file">com.reservapp.PREFERENCE_FILE_KEY</string>
     <string name="default_web_client_id">517645023320-glpqs9pi88avtden8cdftb38m74f3u1r.apps.googleusercontent.com</string>
 
     <!-- config auth -->
@@ -266,5 +265,6 @@
     <string name="confirm_your_appointment">Confirma tu cita</string>
     <string name="confirm">Confirmar</string>
     <string name="any_request">¿Alguna petición especial?</string>
+    <string name="appointmemts_historiy">Historial de citas</string>
 
 </resources>

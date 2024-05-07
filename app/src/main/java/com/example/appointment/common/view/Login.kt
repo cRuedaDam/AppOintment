@@ -10,7 +10,7 @@ import com.example.appointment.commerce.view.activities.home.CommerceHome
 import com.example.appointment.databinding.ActivityLoginBinding
 import com.example.appointment.user.model.AuthUser
 import com.example.appointment.user.view.activities.home.UserHome
-import com.example.reservapp.common.viewModel.Alerts
+import com.example.appointment.common.viewModel.Alerts
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

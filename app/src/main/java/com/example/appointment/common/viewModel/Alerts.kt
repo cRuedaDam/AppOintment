@@ -1,4 +1,4 @@
-package com.example.reservapp.common.viewModel
+package com.example.appointment.common.viewModel
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
