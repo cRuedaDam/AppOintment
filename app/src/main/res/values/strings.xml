@@ -137,6 +137,7 @@
     <string name="user_not_found">Usuario no registrado</string>
     <string name="unsuccessful_user_saved_data">Error al guardar datos del usuario</string>
     <string name="login_fail">Fallo al iniciar sesión</string>
+    <string name="data_fail">Fallo al cargar los datos</string>
 
     <!--                ShowLoading                 -->
     <string name="wait_msg">Espere por favor...</string>

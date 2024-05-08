@@ -243,6 +243,30 @@ class FireBaseManager {
 
     }
 
+    fun getReservedAppointmentsForDate(date: String, employeeId: String, onComplete: (List<String>) -> Unit) {
+
+        val appointmentsCollection = firestore.collection("appointments")
+        val reservedTimes = mutableListOf<String>()
+
+        appointmentsCollection
+            .whereEqualTo("appointment_date", date)
+            .whereEqualTo("employee_id", employeeId)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val appointmentTime = document.getString("appointment_time")
+                    if (appointmentTime != null) {
+                        reservedTimes.add(appointmentTime)
+                    }
+                }
+                onComplete(reservedTimes)
+            }
+            .addOnFailureListener { exception ->
+                Log.e("FirestoreError", "Error getting reserved appointments: $exception")
+                onComplete(emptyList())
+            }
+    }
+
 
     //Users
     fun getUserNameByUid(userId: String, onComplete: (String) -> Unit) {

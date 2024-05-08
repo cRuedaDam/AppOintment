@@ -26,7 +26,7 @@ class AppointmentHistoryAdapter(private val appointments: List<Appointment>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppointmentViewHolder {
         val itemView =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.adapter_commerce_appointment, parent, false)
+                .inflate(R.layout.adapter_history_appointment, parent, false)
         return AppointmentViewHolder(itemView)
     }
 

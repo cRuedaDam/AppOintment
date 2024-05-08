@@ -35,6 +35,7 @@ class SelectAppointmentTime : AppCompatActivity(), OnItemSelectedListener {
     private var fireBaseManager = FireBaseManager()
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val currentUser = firebaseAuth.currentUser
+    private val calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySelectAppointmentTimeBinding.inflate(layoutInflater)
@@ -59,7 +60,7 @@ class SelectAppointmentTime : AppCompatActivity(), OnItemSelectedListener {
 
     private fun goToConfirmAppointment() {
 
-        if (currentUser != null){
+        if (currentUser != null) {
             userId = currentUser.uid
         }
 
@@ -109,14 +110,16 @@ class SelectAppointmentTime : AppCompatActivity(), OnItemSelectedListener {
     }
 
     private fun calculateAvailableTimes(
+        selectedDate: String,
         startTime: String,
         endTime: String,
-        timeRequired: String
+        timeRequired: String,
+        reservedAppointments: List<String>
     ): List<String> {
 
         val timeList = mutableListOf<String>()
         val formatter = SimpleDateFormat("HH:mm", Locale.getDefault())
-        val calendar = Calendar.getInstance()
+
 
         val startDateTime = formatter.parse(startTime)
         val endDateTime = formatter.parse(endTime)
@@ -124,24 +127,44 @@ class SelectAppointmentTime : AppCompatActivity(), OnItemSelectedListener {
         calendar.time = startDateTime
         timeList.add(formatter.format(calendar.time))
 
-        while (calendar.time.before(endDateTime)) {
+        while (calendar.before(endDateTime)) {
             // Agregar el tiempo requerido a la hora actual
             calendar.add(Calendar.MINUTE, timeRequired.toInt())
             // Asegurarse de que la hora calculada no sea después de la hora de fin
             if (calendar.time.before(endDateTime)) {
-                timeList.add(formatter.format(calendar.time))
+                val currentTime = formatter.format(calendar.time)
+                // Verifica si la hora actual está reservada
+                if (!reservedAppointments.contains(currentTime)) {
+                    timeList.add(currentTime)
+                }
             }
         }
-
         return timeList
     }
 
     private fun getTimeDataAndfillScheduleRV() {
 
-        fireBaseManager.getEmployeeWorkSchedule(employeeId, commerceId) { entryTime, exitTime ->
-            fireBaseManager.getSpecialityTimeRequired(specialityId, commerceId) { timeRequired ->
-                val timeList = calculateAvailableTimes(entryTime, exitTime, timeRequired.toString())
-                fillScheduleRV(timeList)
+        val curretDay = calendar.get(Calendar.DAY_OF_MONTH)
+        val curretMonth = calendar.get(Calendar.MONTH) + 1
+        val curretYear = calendar.get(Calendar.YEAR)
+
+        val formateDate = "%d-%d-%d".format(curretDay, curretMonth, curretYear)
+
+        fireBaseManager.getReservedAppointmentsForDate(formateDate, employeeId) { reservedAppointments ->
+            fireBaseManager.getEmployeeWorkSchedule(employeeId, commerceId) { entryTime, exitTime ->
+                fireBaseManager.getSpecialityTimeRequired(
+                    specialityId,
+                    commerceId
+                ) { timeRequired ->
+                    val timeList = calculateAvailableTimes(
+                        formateDate,
+                        entryTime,
+                        exitTime,
+                        timeRequired.toString(),
+                        reservedAppointments
+                    )
+                    fillScheduleRV(timeList)
+                }
             }
         }
     }

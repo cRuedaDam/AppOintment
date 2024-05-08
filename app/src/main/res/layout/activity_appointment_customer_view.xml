@@ -154,11 +154,12 @@
 
             <TextView
                 android:id="@+id/txt_commerce_address"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginHorizontal="15dp"
                 android:text="@string/address_commerce"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -166,18 +167,20 @@
                 android:id="@+id/txt_customer_email_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginHorizontal="15dp"
                 android:text="@string/ejm_email"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_commerce_address" />
 
             <TextView
                 android:id="@+id/txt_customer_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginHorizontal="15dp"
                 android:text="@string/phone_number"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_customer_email_info" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
