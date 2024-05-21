@@ -159,11 +159,12 @@
             <EditText
                 android:id="@+id/edt_state"
                 style="@style/EditTextStyle"
-                android:layout_marginTop="30dp"
-                android:hint="@string/municipio"
+                android:layout_marginTop="28dp"
+                android:hint="@string/provincia"
                 android:maxLines="1"
                 android:paddingStart="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.474"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edt_city" />
 

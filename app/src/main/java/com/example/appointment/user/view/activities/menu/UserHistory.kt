@@ -22,6 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import java.time.LocalDate
 
 class UserHistory : AppCompatActivity() {
 
@@ -99,6 +100,13 @@ class UserHistory : AppCompatActivity() {
                     // Después de obtener los nombres de los servicios, configuramos el adaptador
                     withContext(Dispatchers.Main) {
                         appointmentList.addAll(appointments)
+                        appointmentList.sortBy { appointment ->
+                            val parts = appointment.appointmentDate.split("-")
+                            val year = parts[2].toInt()
+                            val month = parts[1].toInt()
+                            val day = parts[0].toInt()
+                            LocalDate.of(year, month, day)
+                        }
                         appointmentHistoryAdapter = AppointmentHistoryAdapter(appointmentList)
                         rvAppointments.adapter = appointmentHistoryAdapter
                         alerts.hideLoading()

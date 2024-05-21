@@ -204,7 +204,7 @@
     <string name="user_email">email_del_usuario@gmail.com</string>
     <string name="today">Hoy</string>
     <string name="user_name">Nombre del usuario</string>
-    <string name="history">Historial</string>
+    <string name="history">Historial de citas</string>
     <string name="title_activity_edit_profile">EditProfile</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -267,5 +267,6 @@
     <string name="confirm">Confirmar</string>
     <string name="any_request">¿Alguna petición especial?</string>
     <string name="appointmemts_historiy">Historial de citas</string>
+    <string name="provincia">Provincia</string>
 
 </resources>
