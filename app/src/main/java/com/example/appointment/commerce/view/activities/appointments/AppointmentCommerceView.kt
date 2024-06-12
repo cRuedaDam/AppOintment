@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.example.appointment.R
@@ -79,6 +80,7 @@ class AppointmentCommerceView : AppCompatActivity() {
         val date = intent.getStringExtra("appointmentDate")
         val time = intent.getStringExtra("appointmentTime")
         val service = intent.getStringExtra("serviceId")
+        val appointmentId = intent.getStringExtra("appointmentId")
 
         //binding.txtCustomerName.text = userName.toString()
         binding.txtAppointmentDate.text = date.toString()
@@ -106,6 +108,30 @@ class AppointmentCommerceView : AppCompatActivity() {
                 .addOnFailureListener { e ->
                     // Manejar errores
                     Log.e("TAG", "Error al obtener el documento con ID: $userId", e)
+                }
+        }
+
+        if (appointmentId != null) {
+            firestore.collection("appointments")
+                .document(appointmentId)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        val optionalRequest = documentSnapshot.getString("optional_request")
+                        binding.txtOptionalRequest.text = optionalRequest.toString()
+                        if(optionalRequest.toString() == "") {
+                            binding.lyOptionalRequest.visibility = View.GONE
+                        }else{
+                            binding.lyOptionalRequest.visibility = View.VISIBLE
+                        }
+                    } else {
+                        // El documento no existe
+                        Log.d("TAG", "No existe el documento con ID: $appointmentId")
+                    }
+                }
+                .addOnFailureListener { e ->
+                    // Manejar errores
+                    Log.e("TAG", "Error al obtener el documento con ID: $appointmentId", e)
                 }
         }
     }

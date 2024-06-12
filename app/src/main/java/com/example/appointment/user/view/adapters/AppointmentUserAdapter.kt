@@ -41,6 +41,7 @@ class AppointmentUserAdapter(private val appointments: List<Appointment>) :
     override fun onBindViewHolder(holder: AppointmentUserViewHolder, position: Int) {
 
         val currentAppointment = appointments[position]
+        val context = holder.itemView.context
 
         Log.d("AdapterData", "Commerce Name: ${currentAppointment.commerceName}")
         Log.d("AdapterData", "Service ID: ${currentAppointment.serviceId}")
@@ -57,36 +58,29 @@ class AppointmentUserAdapter(private val appointments: List<Appointment>) :
             var appointmentId: String = ""
 
             db.collection("appointments")
-                .whereEqualTo("user_id", currentAppointment.userId)
+                .whereEqualTo("commerce_id", currentAppointment.commerceId)
+                .whereEqualTo("user_id",currentAppointment.userId)
+                .whereEqualTo("appointment_date",currentAppointment.appointmentDate)
+                .whereEqualTo("appointment_time",currentAppointment.appointmentTime)
                 .get()
                 .addOnSuccessListener {
                     try {
                         for (doc in it) {
-                            appointmentId = doc.id.toString()
-                            val context = holder.itemView.context
+                            appointmentId = doc.id
+                            Log.d("AppointmentId:", appointmentId)
 
                             db.collection("appointments")
                                 .document(appointmentId)
                                 .get()
                                 .addOnSuccessListener { documentSnapshot ->
-                                    var commerceId = ""
 
                                     if (documentSnapshot.exists()) {
-                                        commerceId =
-                                            documentSnapshot.getString("commerce_id").toString()
-                                        Log.d(
-                                            "TAG",
-                                            "Commerce ID for Appointment $appointmentId: $commerceId"
-                                        )
-
-                                        val currentAppointment = appointments[position]
-                                        val appointmentId = currentAppointment.appointmentId
-                                        val context = holder.itemView.context
 
                                         val intent =
                                             Intent(context, AppointmentCustomerView::class.java)
                                         intent.putExtra("commerceId", currentAppointment.commerceId)
                                         intent.putExtra("appointmentId", appointmentId)
+                                        Log.d("AppointmentIdIntent:", appointmentId)
                                         intent.putExtra(
                                             "commerceName",
                                             currentAppointment.commerceName

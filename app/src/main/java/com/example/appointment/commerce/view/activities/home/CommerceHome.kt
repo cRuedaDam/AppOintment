@@ -137,6 +137,10 @@ class CommerceHome : AppCompatActivity() {
         handleNoAppointmentsVisibility()
     }
 
+    private fun viewAllAppointments(){
+
+    }
+
     private fun updateRecyclerView() {
         if (!::appointmentAdapter.isInitialized) {
             appointmentAdapter = AppointmentAdapter(appointmentList)

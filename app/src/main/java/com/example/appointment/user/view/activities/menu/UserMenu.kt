@@ -1,16 +1,10 @@
 package com.example.appointment.user.view.activities.menu
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.appointment.R
-import com.example.appointment.commerce.view.activities.home.CommerceHome
-import com.example.appointment.commerce.view.activities.menu.editProfile.CommerceEditProfile
-import com.example.appointment.commerce.view.activities.menu.employees.CommerceEmployees
-import com.example.appointment.commerce.view.activities.menu.specialities.CommerceSpecialities
+import androidx.appcompat.app.AppCompatActivity
 import com.example.appointment.commerce.view.fragments.CustomAlertDialog
 import com.example.appointment.common.view.Login
-import com.example.appointment.databinding.ActivityCommerceMenuBinding
 import com.example.appointment.databinding.ActivityUserMenuBinding
 import com.example.appointment.user.view.activities.home.UserHome
 import com.example.appointment.user.view.activities.menu.editProfile.UserEditProfile

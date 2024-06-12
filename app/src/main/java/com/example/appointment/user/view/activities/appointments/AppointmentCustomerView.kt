@@ -53,6 +53,7 @@ class AppointmentCustomerView : AppCompatActivity() {
                 onAccept = {
                     try {
                         val appointmentId = intent.getStringExtra("appointmentId").toString()
+                        Log.d("RecAppointment: ", appointmentId)
                         fireBaseManager.deleteAppointment(appointmentId)
                         Toast.makeText(
                             this@AppointmentCustomerView,
@@ -60,7 +61,7 @@ class AppointmentCustomerView : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
                         val intent =
-                            Intent(this@AppointmentCustomerView, CommerceHome::class.java)
+                            Intent(this@AppointmentCustomerView, UserHome::class.java)
                         startActivity(intent)
                     } catch (e: Exception) {
                         Toast.makeText(
